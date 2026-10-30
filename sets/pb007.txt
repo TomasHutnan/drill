@@ -17,6 +17,7 @@ title: PB007 Software Engineering
 #
 # test.pdf question 6 (phase after initial development where no more changes are made,
 # "Servicing") is left out: it belongs to maintenance and evolution, lecture 10.
+# test.pdf question 2 (cognitive mechanisms) is left out too: the topic is in no 2026 source.
 mode: answer
 penalty: 1
 floor: yes
@@ -63,15 +64,6 @@ shuffleAnswers: yes
 - Defects in compilers
 - Outdated programming languages
 > Software failures are often socio-technical.
-
-# PAST TEST (Q7). UNSURE: the 2026 slides list causes without ranking them. The answer follows
-# the requirements failures in L2 and the 2022 test's options.
-[single] What is the main and statistically most common reason why software projects fail?
-- Improperly chosen development methodology
-- Lack of qualified people in the team
-- Absence of automated testing
-* Poor requirements definition
-- Missing system analysis and design
 
 [multi] Which of these does the book count as part of software, besides the programs themselves?
 * Associated documentation
@@ -209,13 +201,6 @@ shuffleAnswers: yes
 
 # --- SWEBOK ---
 
-[single] How many knowledge areas does SWEBOK V4 (2024) define?
-- 7
-- 12
-* 18
-- 23
-> Published by the IEEE Computer Society.
-
 [multi] What is the purpose of SWEBOK?
 * It promotes a consistent worldwide view of software engineering
 * It specifies the scope of software engineering through knowledge areas
@@ -223,6 +208,7 @@ shuffleAnswers: yes
 - It certifies individual software products for release
 - It prescribes one mandatory development process
 - It defines the notation and semantics of UML
+> SWEBOK V4 (2024) defines 18 knowledge areas and is published by the IEEE Computer Society.
 
 [single] Which question does the SWEBOK group "Requirements, Architecture, Design" address?
 * Are we building the right thing, and can it be built well?
@@ -384,14 +370,6 @@ shuffleAnswers: yes
 - Less formal specification and semantics than comparable languages have
 - Weaker traceability of requirements through to the hardware parts
 
-# PAST TEST (Q2). UNSURE: cognitive mechanisms are not in the 2026 slides or the book chapters.
-[multi] Which cognitive mechanisms support the understanding of complex models?
-* Chunking (corresponds to modularity)
-* Schemata (corresponds to patterns)
-* Hierarchies (corresponds to hierarchical layering)
-- Spirals (correspond to iterations)
-- Cycles (correspond to mutual dependencies)
-
 # --- UML: Use Case diagram ---
 # DEMO SLIDES: Lecture1-UseCaseDiagram. Book 4.4.3 and 7.1.1 give only the basics.
 
@@ -434,6 +412,17 @@ shuffleAnswers: yes
 # LECTURE 2: Requirements engineering
 # Sources: slides L2, book chapter 4
 # =============================================================================
+
+# --- Why requirements matter ---
+
+# PAST TEST (Q7).
+[single] What is the main and statistically most common reason why software projects fail?
+- Improperly chosen development methodology
+- Lack of qualified people in the team
+- Absence of automated testing
+* Poor requirements definition
+- Missing system analysis and design
+> L2 slide 6 (ESI survey, 2005): poor requirements definition 50%, inadequate risk management 17%, poor scope definition 15%, communication problems 14%, lack of qualified resources 3%.
 
 # --- Requirement types ---
 
@@ -587,6 +576,7 @@ shuffleAnswers: yes
 - Need to have
 - Nice to have
 - Will have
+> The slides use "Want to have" where standard MoSCoW says "Won't have (this time)".
 
 [single] In MoSCoW, a "Should have" requirement is:
 - Mandatory and fundamental to the system
@@ -605,18 +595,7 @@ shuffleAnswers: yes
 - Programming language
 - Test coverage
 - Architecture layer
-
-[single] Which values does the RUP attribute "Status" take?
-* Proposed / Approved / Rejected / Incorporated
-- Critical / Important / Useful
-- High / Medium / Low
-- Must have / Should have / Could have / Want to have
-
-[single] Which values does the RUP attribute "Benefit" take?
-- Proposed / Approved / Rejected / Incorporated
-* Critical / Important / Useful
-- High / Medium / Low
-- Person days / functional points
+> Status is Proposed/Approved/Rejected/Incorporated, Benefit is Critical/Important/Useful, and Risk and Stability are High/Medium/Low.
 
 [single] Which form of requirements specification is the textual specification of UML use cases an example of?
 - Natural language
@@ -760,6 +739,7 @@ shuffleAnswers: yes
 - Operational
 - Regulatory
 - Development
+> Security also appears under External -> Legislative as safety/security requirements, where it means legal obligations rather than a property of the product.
 
 [multi] Which are ORGANIZATIONAL requirements in the NFR classification tree?
 * Environmental
@@ -788,6 +768,7 @@ shuffleAnswers: yes
 - Dependability requirements
 * Legislative requirements
 - Ethical requirements
+> Security as a property of the product is a separate box under Product requirements.
 
 [single] "The system shall be written in Java" is which type of requirement?
 - Product (usability)
@@ -1067,6 +1048,27 @@ shuffleAnswers: yes
 - Ease of use: time to restart after failure
 - Reliability: number of target systems
 
+# --- UML: Activity diagram ---
+# DEMO SLIDES: Lecture2-ActivityDiagram.
+
+[single] In an Activity diagram, what do fork and join nodes represent?
+* The start and synchronisation of parallel flows
+- A decision between alternatives and the merge of those alternatives
+- The initial node and the final node of the whole activity
+- The sending and receiving of messages between two lifelines
+
+[single] In an Activity diagram, what does a decision node (diamond) represent?
+- The start of parallel flows that all run at the same time
+* Choice between alternative flows based on guards
+- The synchronisation of parallel flows into one single flow
+- The end of one flow while the rest of the activity continues
+
+[single] What are swimlanes (partitions) in an Activity diagram used for?
+- Showing timing constraints on each action of the activity in the diagram
+* Showing which actor or organizational unit is responsible for actions
+- Showing the inheritance hierarchy of the classes used by the activity's actions
+- Showing the deployment nodes on which the activity's actions are executed
+
 # =============================================================================
 # LECTURE 3: Agile and other software process models
 # Sources: slides L3, book chapters 2 and 3
@@ -1281,6 +1283,7 @@ shuffleAnswers: yes
 - Boehm's spiral model
 - Rational Unified Process
 - Agile Manifesto
+> Roughly 1970, 1986-88, 1998 and 2001. The years are context, not on the slides.
 
 [order] Order the RUP phases:
 - Inception
@@ -1468,11 +1471,12 @@ shuffleAnswers: yes
 
 # UNSURE: the slide gives 1-6 weeks for a time-boxed iteration. The Scrum picture says 1-4
 # week sprints and the book says usually 2-4 weeks. The answer below uses the time-boxing slide.
-[single] What is the normal length of a time-boxed iteration according to the slides?
+[single] What is the normal length of a time-boxed iteration according to the time-boxing slide?
 * 1-6 weeks
 - 1-3 days
 - 3-6 months
 - 1 year
+> Scrum is narrower: the framework picture shows 1-4 week sprints, and the book says usually 2-4 weeks.
 
 [multi] Which are benefits of agile development in the slides?
 * Customer satisfaction by continuous delivery of software
@@ -1704,12 +1708,6 @@ shuffleAnswers: yes
 - XP
 * Kanban
 - FDD
-
-[single] In the agile practices summary table, which method's "tests" row is described as "test first"?
-- Scrum
-- FDD
-* TDD
-- DSDM
 
 # --- Scaling agile (book 3.4) ---
 
@@ -2073,44 +2071,27 @@ shuffleAnswers: yes
 * State diagram
 - Package diagram
 
-[order] Order the phases of the exemplary method (RUP) from the slides:
+[order] Order the steps of the exemplary method (RUP) from the L4 slides:
 - Requirements: system boundary, actors and requirements modelling
 - Analysis: analysis classes and relationships
 - Design: design classes, interfaces and components
+> These steps correspond to RUP workflows. The RUP phases are Inception, Elaboration, Construction and Transition.
 
-[single] In the exemplary RUP method, in which phase do you identify analysis classes, relationships and inheritance?
+[single] In the exemplary method from the L4 slides, in which step do you identify analysis classes, relationships and inheritance?
 - Requirements
 * Analysis
 - Design
 - Deployment
 
-[single] In the exemplary RUP method, in which phase do you model the system boundary and actors with a Use Case diagram?
+[single] In the exemplary method from the L4 slides, in which step do you model the system boundary and actors with a Use Case diagram?
 * Requirements
 - Analysis
 - Design
 - Transition
 
-# --- UML: Activity, Class and Object diagrams ---
-# DEMO SLIDES: Lecture2-ActivityDiagram and Lecture4-ClassObjectDiagrams. These are the
+# --- UML: Class and Object diagrams ---
+# DEMO SLIDES: Lecture4-ClassObjectDiagrams. This is the
 # notation the lecture decks leave out.
-
-[single] In an Activity diagram, what do fork and join nodes represent?
-* The start and synchronisation of parallel flows
-- A decision between alternatives and the merge of those alternatives
-- The initial node and the final node of the whole activity
-- The sending and receiving of messages between two lifelines
-
-[single] In an Activity diagram, what does a decision node (diamond) represent?
-- The start of parallel flows that all run at the same time
-* Choice between alternative flows based on guards
-- The synchronisation of parallel flows into one single flow
-- The end of one flow while the rest of the activity continues
-
-[single] What are swimlanes (partitions) in an Activity diagram used for?
-- Showing timing constraints on each action of the activity in the diagram
-* Showing which actor or organizational unit is responsible for actions
-- Showing the inheritance hierarchy of the classes used by the activity's actions
-- Showing the deployment nodes on which the activity's actions are executed
 
 # PAST TEST (Q5)
 [single] Which option best matches relationships to examples in a UML Class diagram?
@@ -2168,12 +2149,6 @@ shuffleAnswers: yes
 
 # --- Data and big data ---
 
-[order] Order the chain that the slides describe:
-- Data
-- Information
-- Knowledge
-- Value
-
 [multi] Which statements about data are true?
 * It is information converted into binary digital form
 * It can be created, processed, saved and stored digitally
@@ -2181,6 +2156,7 @@ shuffleAnswers: yes
 - It loses quality after being used multiple times
 - It cannot be transferred from one computer to another
 - It is limited to numeric values
+> The slides describe the chain Data -> Information -> Knowledge -> Value.
 
 [multi] Which statements about Big Data are true?
 * It is a collection of data that is huge in size or growing exponentially with time
@@ -2200,6 +2176,7 @@ shuffleAnswers: yes
 - Viscosity
 - Versatility
 - Verbosity
+> The slides use Variability as the fifth V. Many other sources use Value instead.
 
 [single] Which Big Data characteristic means "data is generated very fast"?
 - Volume
@@ -3010,12 +2987,7 @@ shuffleAnswers: yes
 - Operational
 - Functional
 - Architectural
-
-[single] How many patterns does the Gang of Four book (1995) contain?
-- 7
-- 12
-- 18
-* 23
+> The Gang of Four book (1995) collects 23 patterns into these three groups.
 
 [multi] Which are the essential elements of a design pattern (book)?
 * Name
