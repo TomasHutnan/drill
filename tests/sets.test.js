@@ -24,10 +24,10 @@ function pickLongestShare(questions) {
   return wins.length / single.length;
 }
 
-// Share of absolute wording found in wrong options, across single questions.
+// Share of absolute wording found in wrong options, across single and multi questions.
 function absolutesInWrongOptions(questions) {
   const options = questions
-    .filter((q) => q.type === 'single')
+    .filter((q) => q.type !== 'order')
     .flatMap((q) => q.options.map((text, i) => ({ text, correct: q.correct.includes(i) })))
     .filter(({ text }) => ABSOLUTE.test(text));
   return options.filter(({ correct }) => !correct).length / options.length;
@@ -39,14 +39,16 @@ test('every built-in set parses', () => {
   }
 });
 
-test('pb007 has no duplicate questions', () => {
-  const { questions } = parseSet(read('pb007.txt'));
-  assert.equal(new Set(questions.map((q) => q.id)).size, questions.length);
-});
+for (const file of ['pb007.txt', 'pb007-comprehensive.txt']) {
+  test(`${file} has no duplicate questions`, () => {
+    const { questions } = parseSet(read(file));
+    assert.equal(new Set(questions.map((q) => q.id)).size, questions.length);
+  });
 
-test('pb007 cannot be passed by test-taking tricks', () => {
-  const { questions } = parseSet(read('pb007.txt'));
-  assert.ok(tickAllShare(questions) < 0.2, `tick all: ${tickAllShare(questions)}`);
-  assert.ok(pickLongestShare(questions) < 0.35, `pick longest: ${pickLongestShare(questions)}`);
-  assert.ok(absolutesInWrongOptions(questions) < 0.8, `absolutes: ${absolutesInWrongOptions(questions)}`);
-});
+  test(`${file} cannot be passed by test-taking tricks`, () => {
+    const { questions } = parseSet(read(file));
+    assert.ok(tickAllShare(questions) < 0.2, `tick all: ${tickAllShare(questions)}`);
+    assert.ok(pickLongestShare(questions) < 0.35, `pick longest: ${pickLongestShare(questions)}`);
+    assert.ok(absolutesInWrongOptions(questions) < 0.8, `absolutes: ${absolutesInWrongOptions(questions)}`);
+  });
+}

@@ -1,0 +1,3544 @@
+title: PB007 Software Engineering (Comprehensive)
+
+# Full question bank. sets/pb007.txt is the condensed version for revision.
+#
+# Covers lectures 1-7 (Autumn 2026 slides) and Sommerville, Software Engineering 10th ed.,
+# chapters 1, 2, 3, 4 and 7. Lectures below follow the slide deck numbers.
+#
+# Exam format (from the course intro and test.pdf, a 2022 term): 7 questions at 5 points each.
+# "Exact fit" questions are written here as [single], "sum of options" questions as [multi].
+# The settings below approximate that. UNSURE: the exam's penalty for wrong options is not
+# stated anywhere in the sources, so penalty: 1 is a guess. Change it in the options form.
+#
+# Comment tags used in this file:
+#   UNSURE       something in the sources is odd, or I could not confirm it
+#   DEMO SLIDES  notation that is not in the lecture decks. Written from standard UML knowledge
+#                and later spot-checked against temp-pb007-kgb/demo_slides. UML is mainly
+#                examined in the modelling part, so these questions are deliberately few.
+#   PAST TEST    adapted from a question in test.pdf. It has no answer key, so answers are mine.
+#
+# test.pdf question 6 (phase after initial development where no more changes are made,
+# "Servicing") is left out: it belongs to maintenance and evolution, lecture 10.
+# test.pdf question 2 (cognitive mechanisms) is left out too: the topic is in no 2026 source.
+mode: answer
+penalty: 1
+floor: yes
+feedback: immediate
+shuffleQuestions: yes
+shuffleAnswers: yes
+
+# =============================================================================
+# LECTURE 1: Introduction, software engineering, system modelling
+# Sources: slides L1, book chapter 1
+# =============================================================================
+
+# --- Why software engineering ---
+
+[single] Which definition of software engineering is given by IEEE Std. 610.12-1990?
+- The application of a creative, flexible, intuition-based approach to the design, coding, and debugging of software programs
+* The application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software
+- The study of the theories, methods and formal foundations that underlie computers, computation and information processing
+- The management of the teams, budgets, schedules and contracts needed to deliver a software product on time to a customer
+> "...that is, the application of engineering to software."
+
+[multi] In the IEEE definition of software engineering, which meanings of the terms are correct?
+* Systematic: intentional, repeatable ways of working
+* Disciplined: agreed practices followed by teams
+* Quantifiable: evidence, measurement, feedback
+- Systematic: agreed practices followed by teams
+- Disciplined: evidence, measurement, feedback
+- Quantifiable: intentional, repeatable ways of working
+> "Development, operation, maintenance" then stands for the whole lifecycle.
+
+[single] When and where did the term "software engineering" emerge as a response to late, over-budget and unreliable projects?
+- 1970, in the paper by Royce that described a phased development process
+* 1968 and 1969, NATO Software Engineering Conferences
+- 1987, in the essay by Brooks that separated accidental from essential difficulties
+- 2001, at the meeting that produced the Manifesto for Agile Software Development
+
+[multi] Which of these does the slide list as frequent sources of software failure?
+* Unclear or changing requirements
+* Unrealistic expectations
+* Poor communication
+* Weak risk management
+* Organisational and management problems
+- Insufficient processor speed
+- Defects in compilers
+- Outdated programming languages
+> Software failures are often socio-technical.
+
+[multi] Which of these does the book count as part of software, besides the programs themselves?
+* Associated documentation
+* Configuration data
+* Libraries
+- The hardware the programs run on
+- The team's office infrastructure
+- The customer's payment for the project
+> The slides add requirements, design documents, tests, deployment and operational procedures as artefacts that software engineering manages.
+
+[single] Which statement captures the book's critical distinction between generic and customized software products?
+* For generic products the developer controls the specification, for customized products the buying organization does
+- For generic products the buying organization controls the specification, for customized products the developer does
+- For both kinds of product the developer controls the specification, and the customer reviews each finished release
+- For both kinds of product the buying organization controls the specification through a detailed signed contract
+> The distinction is blurring, e.g. ERP systems such as SAP are generic products adapted to a customer.
+
+[multi] Which are the essential attributes of good software according to Sommerville?
+* Maintainability
+* Dependability and security
+* Efficiency
+* Acceptability
+- Portability
+- Scalability
+- Modularity
+- Reusability
+
+[multi] Which are the fundamental activities common to all software processes (book)?
+* Specification
+* Development
+* Validation
+* Evolution
+- Procurement
+- Marketing
+- Project management
+- Retirement
+> Project management is a supporting activity in the book, not one of the four fundamental ones.
+
+[single] How does software engineering differ from computer science (book)?
+- Computer science focuses on the practicalities of producing software, software engineering on theory and fundamentals
+* Computer science focuses on theory and fundamentals, software engineering on the practicalities of producing software
+- Computer science covers both hardware and software, software engineering covers the writing of program code by itself
+- Computer science is the part of software engineering that deals with designing and analysing individual algorithms
+
+[single] How does system engineering relate to software engineering (book)?
+- Software engineering is more general: it includes hardware, software and process engineering, and system engineering is part of it
+* System engineering is more general: it includes hardware, software and process engineering, and software engineering is part of it
+- The two disciplines are unrelated: system engineering deals with operating systems, and software engineering with applications
+- The two disciplines are synonyms: both cover the same activities, and the name depends on the industry in which they are applied
+
+[multi] Which general issues does the book name as affecting many types of software?
+* Heterogeneity
+* Business and social change
+* Security and trust
+* Scale
+- Declining hardware performance
+- Compilation speed
+- Shortage of programming languages
+
+[multi] Which of these are in the book's list of eight application types?
+* Embedded control systems
+* Batch processing systems
+* Interactive transaction-based applications
+* Systems of systems
+- Operating system kernels
+- Programming language compilers
+- Database management systems
+
+[multi] Which of these are also in the book's list of eight application types?
+* Stand-alone applications
+* Entertainment systems
+* Systems for modeling and simulation
+* Data collection and analysis systems
+- Device drivers
+- Web browsers
+- Version control systems
+
+[single] What does the book name as the most significant factor when choosing software engineering methods and techniques?
+- Size of the development team
+- Programming language used by the team
+* Type of application being developed
+- Budget of the customer for the first release
+
+[single] According to the book, roughly how are software development costs split for a typical project?
+- 10% development, 90% testing
+* 60% development, 40% testing
+- 90% development, 10% testing
+- 30% development, 70% testing
+> For custom software, evolution costs often exceed development costs.
+
+[multi] Which are effects of the web on software engineering (book)?
+* Reuse is the dominant approach for building web-based systems
+* Requirements cannot practically all be specified in advance, so systems are delivered incrementally
+* Software can be delivered as a service
+- Requirements can be fully specified up front, so systems are delivered in one release
+- User interface development became more expensive than for desktop systems
+- The waterfall model became the dominant process for web-based systems
+
+# --- Ethics (book only) ---
+
+[multi] Which areas of professional responsibility does the book describe?
+* Confidentiality
+* Competence
+* Intellectual property rights
+* Computer misuse
+- Market share
+- Team velocity
+- Technical debt
+
+[multi] Which of these are among the eight principles of the ACM/IEEE Software Engineering Code of Ethics?
+* Public
+* Client and employer
+* Product
+* Judgment
+- Shareholders
+- Competitors
+- Government
+- Contract
+
+[multi] Which of these are also among the eight principles of the ACM/IEEE Code of Ethics?
+* Management
+* Profession
+* Colleagues
+* Self
+- Investors
+- Regulators
+- Vendors
+- Competition
+
+[single] Which principle of the ACM/IEEE Code of Ethics is listed first, as the overriding concern?
+* Public
+- Client and employer
+- Product
+- Self
+
+# --- SWEBOK ---
+
+[multi] What is the purpose of SWEBOK?
+* It promotes a consistent worldwide view of software engineering
+* It specifies the scope of software engineering through knowledge areas
+* It characterizes the contents of each area, with references to other materials
+- It certifies individual software products for release
+- It prescribes one mandatory development process
+- It defines the notation and semantics of UML
+> SWEBOK V4 (2024) defines 18 knowledge areas and is published by the IEEE Computer Society.
+
+[single] Which question does the SWEBOK group "Requirements, Architecture, Design" address?
+* Are we building the right thing, and can it be built well?
+- Have we built the software right?
+- How do we keep the system running smoothly?
+- How do we design and manage the organisation that performs the work?
+
+[single] In SWEBOK, which pair of knowledge areas falls under "Run and evolve the system" together with Operations?
+- Testing and Quality
+* Maintenance and Configuration management
+- Economics and Process
+- Professional practice and Engineering foundations
+
+[multi] Which SWEBOK knowledge areas are in the group "Organise the work"?
+* Management
+* Process
+* Models and methods
+* Economics
+- Security
+- Construction
+- Testing
+- Operations
+
+[multi] Which SWEBOK knowledge areas are in the group "Create and check the software"?
+* Construction
+* Testing
+* Quality
+* Security
+- Operations
+- Economics
+- Maintenance
+- Management
+
+[single] SWEBOK's Construction knowledge area covers:
+* Coding, debugging, integration
+- Plan, estimate, coordinate
+- Deployment, monitoring, support
+- Value, costs, trade-off decisions
+
+# --- AI and software engineering ---
+
+[multi] Which belong to "software engineering FOR AI" (as opposed to AI for software engineering)?
+* Data and model quality
+* Evaluation
+* Monitoring and drift
+* Accountability
+- Code generation
+- Test generation
+- Documentation
+- Design exploration
+
+[multi] Which statements about AI in software engineering match the slides?
+* Correctness of generated code is a challenge
+* Security vulnerabilities and licensing are risks
+* Behaviour outside the evaluation data can be unpredictable
+- Responsibility for generated output moves to the AI vendor
+- Engineering judgement is no longer needed
+- Validation and monitoring become less important
+> Responsibility remains with people and organisations. AI makes validation, review, monitoring and accountability more important.
+
+# --- No Silver Bullet ---
+
+[single] What is the claim of Brooks' "No Silver Bullet" (1987)?
+- Object-oriented programming removes most of the accidental complexity of building software systems
+- Adding more people to a software project that is already late makes that project even later
+* There is no single technique or tool that will make software development dramatically easy
+- Formal specification is the one technique that can make large software projects predictably succeed
+
+[multi] Which are essential difficulties of software according to Brooks?
+* Complexity
+* Conformity
+* Changeability
+* Invisibility
+- Slow compilers
+- Weak debuggers
+- Limited memory
+- Poor editors
+> Tools and circumstances cause accidental difficulties. Essential ones come from the nature of software itself.
+
+[single] In Brooks' terms, "conformity" means that software:
+- Has no natural physical form and is hard to visualize fully
+* Must fit human institutions and legacy constraints
+- Is expected to evolve as needs change over its lifetime
+- Consists of many interacting states, rules and exceptions
+
+[single] Difficulties caused by tools and circumstances are called:
+* Accidental difficulties
+- Essential difficulties
+- Incidental faults
+- Environmental requirements
+
+# --- System modelling ---
+
+[multi] Which statements about models match the summary of the slides?
+* Models provide simplified views or perspectives
+* Different views suit different stakeholders
+* Models are thinking tools
+* A model is a purposeful abstraction of the system
+- A sufficiently detailed model replaces the system
+- One model should show the perspectives of all stakeholders
+- The level of detail should be as high as possible in each model
+
+[single] System modelling is:
+- The process of writing the source code of a system by means of a graphical modelling tool
+* The process of developing abstract models of a system, each presenting a different view
+- The process of measuring a running system to obtain its performance and reliability data
+- The process of building a physical prototype of the hardware on which the system will run
+
+[multi] Which are disadvantages of UML named in the slides?
+* Complex notation
+* Less explicit connections between diagrams
+* Too technical for non-developers
+- Lack of tool support
+- Non-standardised notation
+- Immature and little known
+
+[multi] Which are advantages of UML named in the slides?
+* Mature and well-known
+* Standardised notation
+* Expressive
+* Tool support
+- Easy to learn
+- Explicit levels of abstraction
+- Covers hardware, software and people
+- Useful for architecture roadmaps
+> The wrong options belong to C4 (the first two), SysML and ArchiMate.
+
+[single] Which modelling approach is an extension of UML focused on cyber-physical systems?
+- C4
+- ArchiMate
+* SysML
+- BPMN
+> It covers hardware, software and people, and has better requirements traceability, but it is more complex than UML.
+
+[order] Order the levels of the C4 model from the most abstract to the most detailed:
+- Context
+- Containers
+- Components
+- Code
+
+[multi] Which statements about the C4 model are true?
+* It is designed for wider understandability and communication
+* It has explicit levels of abstraction
+* It is lightweight and good for agile development
+- It has rich support for behaviour modelling
+- It has very formal semantics
+- It is an extension of UML for cyber-physical systems
+
+[single] Which language is intended for enterprise architecture and describes relationships between business, application and technology?
+- C4
+- SysML
+- UML
+* ArchiMate
+> Rich dependency options and useful for roadmaps, but large and overkill for simple systems.
+
+[single] Which is a named disadvantage of SysML in the slides?
+* More complex than UML and difficult to learn, with heavyweight tools
+- Missing many types of models, for example for modelling behaviour
+- Less formal specification and semantics than comparable languages have
+- Weaker traceability of requirements through to the hardware parts
+
+# --- UML: Use Case diagram ---
+# DEMO SLIDES: Lecture1-UseCaseDiagram. Book 4.4.3 and 7.1.1 give only the basics.
+
+[single] In a UML Use Case diagram, what does an actor represent?
+- A class of the implementation that handles requests from users
+* A role played by an external entity interacting with the system
+- A specific named person who uses the finished system every day
+- A single step in the main flow of a use case's specification
+
+[single] In a Use Case diagram, what does the "include" relationship express?
+* The base use case always incorporates the behaviour of the included use case
+- The base use case may gain extra behaviour from another one under a condition
+- The child actor inherits all the interactions of its parent actor in the diagram
+- The two connected use cases run in parallel with one another during execution
+
+[single] In a Use Case diagram, what does the "extend" relationship express?
+- Mandatory behaviour that several base use cases always share and incorporate
+* Optional behaviour added to a base use case under certain conditions
+- One actor communicating directly with another actor of the same system
+- Inheritance of attributes and operations from a more general class
+
+[multi] What is part of the textual specification of a use case in the demo slides?
+* Actors
+* Preconditions
+* Main flow
+* Alternative flows
+* Postconditions
+- Class attributes
+- Combined fragments
+- Deployment nodes
+- Swimlanes
+
+[single] According to the book, how is a use case drawn in a UML diagram?
+- A rectangle with compartments for its name, attributes and operations
+* A named ellipse, connected by lines to stick-figure actors
+- A diamond with guarded edges leading to the following action nodes
+- A dashed vertical line with activation bars placed along its length
+
+# =============================================================================
+# LECTURE 2: Requirements engineering
+# Sources: slides L2, book chapter 4
+# =============================================================================
+
+# --- Why requirements matter ---
+
+# PAST TEST (Q7).
+[single] What is the main and statistically most common reason why software projects fail?
+- Improperly chosen development methodology
+- Lack of qualified people in the team
+- Absence of automated testing
+* Poor requirements definition
+- Missing system analysis and design
+> L2 slide 6 (ESI survey, 2005): poor requirements definition 50%, inadequate risk management 17%, poor scope definition 15%, communication problems 14%, lack of qualified resources 3%.
+
+# --- Requirement types ---
+
+[single] Requirements are:
+* Descriptions of system services and constraints under which the system operates and is developed
+- Descriptions of the classes, interfaces and data structures from which the system will be implemented
+- Descriptions of the contract price, schedule and payment conditions agreed with the customer
+- Descriptions of the test cases that the customer will run before accepting the delivered system
+
+[single] Which is a functional requirement?
+* A user shall be able to search the appointments lists for all clinics.
+- The system shall be available Mon-Fri, 8 am-5 pm, with downtime not exceeding five seconds a day.
+- The system shall be implemented in Java.
+- The system shall comply with GDPR.
+
+[single] Which is a non-functional requirement?
+- The system shall generate a daily list of patients expected at a clinic.
+* The system shall respond to a search within 2 seconds for 95% of requests.
+- A user shall be able to cancel an appointment.
+- Each staff member shall be identified by an eight-digit number.
+
+[multi] Which statements about user and system requirements are true?
+* User requirements are statements in natural language plus diagrams
+* System requirements are more detailed and useful for implementation
+* System requirements are often part of the contract
+- User requirements are more detailed than system requirements
+- System requirements are abstract high-level statements of services
+- User requirements are usually written in a formal mathematical notation
+
+[multi] Which are the requirements quality criteria from the slides?
+* Complete
+* Consistent
+* Precise
+* Verifiable
+* Realistic
+- Reusable
+- Elegant
+- Modular
+- Portable
+
+[single] Which quality criterion asks "Is there one and only interpretation in the system context?"
+- Complete
+- Consistent
+* Precise
+- Realistic
+
+[single] "The system shall be easy to use" violates mainly which criterion?
+- Consistent
+* Verifiable
+- Complete
+- Realistic
+> The book recommends quantifying such goals, e.g. after two hours of training, experienced users average at most two errors per hour.
+
+[single] Two requirements contradict each other: one needs all data encrypted at rest, another needs plain-text storage. Which criterion is violated?
+- Complete
+* Consistent
+- Precise
+- Verifiable
+
+[multi] Why are non-functional requirements often more critical than individual functional ones (book)?
+* Users can work around a missing function, but a failed non-functional requirement can make the whole system unusable
+* They may affect the overall architecture rather than individual components
+* A single one can generate several related functional requirements
+- They are usually local to one component, so failing one affects a single feature
+- They are cheaper to verify than functional requirements
+- They are stated by the developers, so they are easier to change
+
+[multi] Which statements about a stakeholder (book) are true?
+* It is anyone affected by the system or with a legitimate interest in it
+* End-users and managers are stakeholders
+* Trade unions and domain experts can be stakeholders
+- Stakeholders are limited to the paying customer
+- Stakeholders are limited to the people who operate the system
+- Maintenance engineers are not stakeholders
+
+[multi] Which questions does a feasibility study answer (book)?
+* Does the system contribute to the organization's overall objectives?
+* Can it be implemented within schedule and budget using current technology?
+* Can it be integrated with other systems in use?
+- Which design patterns will the code use?
+- What will the class structure of the system be?
+- Which test cases will the customer run for acceptance?
+
+# --- RE process ---
+
+[order] Order the steps of the requirements engineering process from the slides:
+- Requirements discovery
+- Requirements classification and prioritization
+- Requirements specification
+- Requirements verification and validation
+
+[single] Requirements discovery should focus on:
+* WHAT the system should do rather than HOW it will do it
+- HOW the system is implemented rather than WHAT it does
+- Which programming language fits best
+- The cost of the hardware only
+
+[single] Which elicitation technique means observing how people actually work under real social and organizational factors?
+- Questionnaires
+- Closed interviews
+- Workshops
+* Ethnography
+
+[multi] Which are requirements discovery techniques named in the slides?
+* Questionnaires
+* Interviews
+* Workshops
+* Ethnography
+- Refactoring
+- Mutation testing
+- Pair programming
+- Heartbeat
+
+[single] How do open and closed interviews differ?
+* Closed interviews follow a pre-determined list of questions, open ones explore various issues freely
+- Open interviews follow a pre-determined list of questions, closed ones explore various issues freely
+- Closed interviews bring the stakeholders into a workshop, open ones are held with a single stakeholder
+- Open interviews are published to the whole company, closed ones stay confidential between both parties
+
+[multi] Which statements about ethnography are true, according to the book?
+* It reveals how people actually work rather than how formal processes say they do
+* It reveals cooperation and awareness of other people's activities
+* It works well combined with prototyping
+- It is effective for discovering broader organizational and domain requirements
+- It is a good way to discover innovative new features
+- It is sufficient on its own, so interviews add nothing to it
+
+[multi] Which difficulties of requirements elicitation does the book list?
+* Stakeholders often do not know what they want from the system
+* Stakeholders express requirements in their own terms
+* Different stakeholders may have conflicting requirements
+* Political factors may influence the requirements
+- Stakeholders insist on using the developers' technical notation
+- Stakeholder needs stay fixed from the first interview onwards
+- Stakeholders share one common view of what the system should do
+
+[single] How do stories and scenarios differ in the book?
+* Stories are high-level narratives, scenarios are structured with specific inputs and outputs
+- Scenarios are high-level narratives, stories are structured with specific inputs and outputs
+- Stories are written by developers for developers, scenarios are written by customers for them
+- Stories describe the system's internal design, scenarios describe its deployment on hardware
+
+# UNSURE: the slide says "Want to have". Standard MoSCoW is "Won't have (this time)". Both
+# mean "can wait for later releases". The answer below uses the slide wording.
+[multi] Which belong to the MoSCoW prioritization criteria as listed in the slides?
+* Must have
+* Should have
+* Could have
+* Want to have (can wait for later releases)
+- Might have
+- Need to have
+- Nice to have
+- Will have
+> The slides use "Want to have" where standard MoSCoW says "Won't have (this time)".
+
+[single] In MoSCoW, a "Should have" requirement is:
+- Mandatory and fundamental to the system
+* Important, but may be omitted
+- Truly optional, with little effect if it is left out
+- Able to wait for one of the later releases
+
+[multi] Which are RUP requirement attributes?
+* Status
+* Benefit
+* Effort
+* Risk
+* Stability
+* Target release
+- Author
+- Programming language
+- Test coverage
+- Architecture layer
+> Status is Proposed/Approved/Rejected/Incorporated, Benefit is Critical/Important/Useful, and Risk and Stability are High/Medium/Low.
+
+[single] Which form of requirements specification is the textual specification of UML use cases an example of?
+- Natural language
+* Structured language
+- Graphical notation
+- Mathematical specification
+
+[single] Finite state machines are an example of which form of requirements specification?
+- Natural language
+- Structured language
+- Graphical notation
+* Mathematical specification
+> Book: unambiguous, but customers cannot check them and may not accept them as a contract.
+
+[multi] Which statements about natural-language requirements (book) are true?
+* "Shall" denotes a mandatory requirement
+* "Should" denotes a desirable requirement
+* Jargon, abbreviations and acronyms should be avoided
+* It is good practice to attach a rationale to each requirement
+- "Should" denotes a mandatory requirement
+- "Shall" denotes a desirable requirement
+- Several related requirements should be merged into one sentence
+
+[multi] What does a structured specification of a functional requirement contain (book)?
+* Description of the function
+* Inputs and their origin
+* Outputs and their destination
+* Action to be taken
+* Precondition and postcondition
+* Side effects
+- Class diagram of the implementation
+- Estimated cost of the function
+- Name of the requirements engineer
+- Results of the latest test run
+
+[multi] Which pairings of a reader and their use of the requirements document match the book?
+* Managers: plan a bid and plan the development process
+* System test engineers: develop validation tests for the system
+* System customers: specify the requirements and check that they meet their needs
+- Managers: develop validation tests for the system
+- System test engineers: plan a bid for the system
+- Maintenance engineers: plan the development process
+
+[multi] When is a detailed requirements document needed most (book)?
+* When development is outsourced
+* When several independent teams build the system
+* When a detailed analysis of requirements is mandatory, e.g. for critical systems
+- When a small co-located team develops a product in-house
+- When requirements change daily in an agile project
+- When the system is a throwaway prototype
+
+[single] What is the software requirements document?
+* The official statement of what the developers should implement
+- The official record of the defects found during system testing
+- The official plan of the project's budget, milestones and staffing
+- The official reference to the public API of the source code
+
+[single] What does requirements VERIFICATION check?
+* Requirements' completeness, consistency, preciseness, verifiability and realism
+- That the requirements define the system that the customer really wants or needs
+- That the source code passes all of its unit and integration tests on the build server
+- That the delivered hardware meets the capacity estimated during system analysis
+
+[single] What does requirements VALIDATION check?
+- That the requirements are complete, consistent, precise, verifiable and realistic
+- That the source code compiles and each requirement has a unique identifier in the tool
+* That the requirements define the system the customer really wants or needs
+- That the requirements are stored in a tool that supports versioning and baselines
+
+[multi] Which are requirements verification and validation techniques in the slides?
+* Requirements reviews
+* Prototyping
+* A/B testing
+- Ethnography
+- Load balancing
+- Heartbeat
+
+[multi] Which checks does the book list for requirements validation?
+* Validity
+* Consistency
+* Completeness
+* Realism
+* Verifiability
+- Reusability
+- Portability
+- Profitability
+- Modularity
+
+[single] Why are requirements errors more expensive than design or coding errors (book)?
+- They occur far more often than any other kind of error found in software
+* Fixing them usually means redesigning, reimplementing and retesting the system
+- They have to be approved by an external regulator each time one is corrected
+- They are made by senior staff, whose time is the most expensive in any project
+
+[single] What is requirements traceability?
+* Links between dependent requirements, important to assess the impact of requirements changes
+- Logging of user actions at runtime, important to discover who did what in the running system
+- Records of who wrote each line of code, important to assign responsibility for reported defects
+- Lists of the system's stakeholders, important for deciding whom to invite to the workshops
+
+[single] What should happen with each proposed requirements change?
+* It should be analysed before deciding whether to accept it
+- It should be implemented immediately to keep the customer satisfied
+- It should be rejected once the requirements document has been approved
+- It should go straight to testing before anybody estimates its cost
+
+[order] Order the stages of requirements change management (book):
+- Problem analysis and change specification
+- Change analysis and costing
+- Change implementation
+
+[multi] Which decisions does requirements management planning include (book)?
+* Requirements identification
+* A change management process
+* Traceability policies
+* Tool support
+- Choice of database engine
+- Choice of programming language
+- Length of a sprint
+
+[single] The book's enduring requirements are:
+* Core requirements related to slow-to-change activities of the organization
+- Supporting requirements reflecting how work is currently done, likely to change
+- Requirements concerned with the hardware platform that the system runs on
+- Requirements that have not yet been approved by the system's stakeholders
+
+# --- Non-functional requirements classification ---
+
+[single] Into which three top-level groups does the slide classification divide non-functional requirements?
+* Product, organizational, external
+- Functional, structural, behavioural
+- Safety, security, performance
+- Internal, external, hidden
+
+[multi] Which are PRODUCT requirements in the NFR classification tree?
+* Efficiency
+* Dependability
+* Security
+* Usability
+- Legislative
+- Operational
+- Regulatory
+- Development
+> Security also appears under External -> Legislative as safety/security requirements, where it means legal obligations rather than a property of the product.
+
+[multi] Which are ORGANIZATIONAL requirements in the NFR classification tree?
+* Environmental
+* Operational
+* Development
+- Regulatory
+- Performance
+- Ethical
+
+[multi] Which are EXTERNAL requirements in the NFR classification tree?
+* Regulatory
+* Ethical
+* Legislative
+- Development
+- Usability
+- Efficiency
+
+[single] In the NFR tree, performance and space requirements are subtypes of:
+* Efficiency requirements
+- Dependability requirements
+- Operational requirements
+- Regulatory requirements
+
+[single] In the NFR tree, accounting and safety/security requirements are subtypes of:
+- Development requirements
+- Dependability requirements
+* Legislative requirements
+- Ethical requirements
+> Security as a property of the product is a separate box under Product requirements.
+
+[single] "The system shall be written in Java" is which type of requirement?
+- Product (usability)
+* Organizational (development)
+- Organizational (environmental)
+- External (legislative)
+
+[single] "The system shall comply with accounting legislation" is which type of requirement?
+- Product
+- Organizational
+* External
+- Functional
+
+[single] Integration with legacy systems is, according to the slides, which organizational requirement?
+- Development
+- Operational
+* Environmental
+- Legislative
+
+[single] The execution platform and projected lifetime are, according to the slides, which organizational requirement?
+- Development
+* Operational
+- Environmental
+- Ethical
+
+[multi] Which are EXTERNAL (visible) software qualities on the slides?
+* Reliability
+* Security
+* Performance
+* Usability
+- Maintainability
+- Testability
+- Understandability
+- Reusability
+
+[multi] Which are INTERNAL (invisible) software qualities on the slides?
+* Maintainability
+* Testability
+* Understandability
+* Reusability
+- Performance
+- Availability
+- Security
+- Usability
+
+[multi] Which are the principal dependability attributes?
+* Availability
+* Reliability
+* Safety
+* Security
+- Usability
+- Modifiability
+- Portability
+- Efficiency
+
+[single] Match the attribute: "the ability of the system to deliver services as specified".
+- Availability
+* Reliability
+- Safety
+- Security
+
+[single] Match the attribute: "the ability of the system to deliver services when requested".
+* Availability
+- Reliability
+- Safety
+- Security
+
+[single] Match the attribute: "the ability of the system to operate without catastrophic failure".
+- Availability
+- Reliability
+* Safety
+- Security
+
+[single] Availability is defined as:
+- The probability of failure-free system operation over a specified time in a given environment
+* The probability that a system, at a point in time, will be operational and able to deliver the requested services
+- The probability that the system operates without causing human injury, death or damage to its environment
+- The probability that a request is processed within the response time the users expect from the system's service
+
+[single] Which formula expresses availability?
+- MTTR / (MTTF + MTTR)
+* MTTF / (MTTF + MTTR)
+- MTTF / MTTR
+- 1 - (MTTF / MTTR)
+
+[single] A system fails on average after 99 hours and repair takes 1 hour on average. What is its availability?
+- 0.90
+- 0.98
+* 0.99
+- 0.999
+
+[single] Reliability is:
+* The probability of failure-free system operation over a specified time in a given environment for a given purpose
+- The probability that a system, at a point in time, will be operational and able to deliver the requested services
+- The system's ability to protect itself from accidental or deliberate external attack on its services and data
+- The system's ability to operate, normally or abnormally, without danger of injury, death or environmental damage
+
+[single] Which measure is used for reliability within a single service or usage scenario execution?
+- Mean time to repair (MTTR)
+* Probability of failure on demand (PFD)
+- Mean time between failures (MTBF)
+- Number of transactions processed per minute
+
+[order] Order the reliability concepts along the chain of cause and effect:
+- Human error or mistake
+- System fault
+- System error
+- System failure
+
+[single] A programmer's code adds 1 hour to the time without checking for midnight. This code is a:
+- Human error
+* System fault
+- System error
+- System failure
+
+[single] The transmission time variable is set to 24.XX rather than 00.XX at runtime. This is a:
+- Human error
+- System fault
+* System error
+- System failure
+
+[single] No weather data is transmitted because the time is invalid. This is a:
+- Human error
+- System fault
+- System error
+* System failure
+
+[single] Safety requirements are often "exclusive", meaning that they:
+- Apply to one group of users and exclude the other groups from them
+* Exclude undesirable situations rather than specify required services
+- Exclude all other requirements from consideration while they are active
+- Are written for exclusive customers rather than for the open market
+
+[single] Safety term: a condition with the potential for causing or contributing to an accident. For example, a failure of the blood glucose sensor.
+* Hazard
+- Accident
+- Damage
+- Risk
+
+[single] Safety term: an unplanned event or sequence of events resulting in death, injury or damage to property or the environment.
+- Hazard
+* Accident (mishap)
+- Risk
+- Hazard severity
+
+[single] Safety term: a measure of the probability that the system will cause an accident.
+- Damage
+- Hazard severity
+- Hazard probability
+* Risk
+> Assessed from hazard probability, hazard severity and the probability that the hazard leads to an accident.
+
+[single] Safety term: an assessment of the worst possible damage that could result from a particular hazard.
+- Hazard probability
+* Hazard severity
+- Damage
+- Exposure
+
+[multi] Security defends the system against threats to which properties?
+* Confidentiality
+* Integrity
+* Availability
+- Modularity
+- Portability
+- Usability
+
+[single] Which threat lets people or programs without authorization read information?
+* Threat to confidentiality
+- Threat to integrity
+- Threat to availability
+- Threat to reliability
+
+[single] A threat that damages or corrupts the software or its data is a threat to:
+- Confidentiality
+* Integrity
+- Availability
+- Usability
+
+[single] Security term: a weakness in a computer-based system that may be exploited, such as a weak password.
+- Asset
+- Exposure
+* Vulnerability
+- Control
+
+[single] Security term: something of value which has to be protected, such as patient records.
+* Asset
+- Exposure
+- Threat
+- Attack
+
+[single] Security term: a protective measure that reduces a system's vulnerability, such as encryption.
+- Threat
+- Asset
+- Exposure
+* Control
+
+[single] Security term: possible loss or harm to a computing system, such as financial loss from legal action.
+- Attack
+* Exposure
+- Vulnerability
+- Control
+
+[single] Security term: an exploitation of a system's vulnerability.
+- Exposure
+- Control
+* Attack
+- Asset
+
+[single] Security term: circumstances that have potential to cause loss or harm.
+* Threat
+- Asset
+- Control
+- Exposure
+
+[multi] Which statements about dependencies between dependability attributes are true?
+* Safe operation depends on the system being available and reliable, but not on that alone
+* A system may be unreliable because its data was corrupted by an external attack
+* Service attacks aim to make a system unavailable
+* If a system is infected with a virus, you cannot be confident in its reliability or safety
+- A reliable system is by definition a safe system
+- An available system is by definition a reliable system
+- External attacks affect confidentiality and leave reliability untouched
+
+[single] What do the slides call an essential pre-requisite for availability, reliability and safety?
+- Usability
+* Security
+- Portability
+- Modifiability
+
+[single] Performance is primarily about:
+* Timing, i.e. response time to events
+- The cost of making a change to the system
+- How easily users can learn the system's features
+- Protection of the system against external attack
+
+[single] To what is performance highly sensitive, according to the slides?
+- Documentation effects such as the age and completeness of the manuals
+* Concurrency effects such as number of users and shared resources
+- Team effects such as the number of developers and their seniority
+- Style effects such as naming conventions and source code layout
+
+[multi] Which areas does usability break down into?
+* Learning system features
+* Using a system efficiently
+* Minimizing the impact of errors
+* Adapting the system to user needs
+* Increasing confidence and satisfaction
+- Reducing the mean time to repair
+- Hiding information between modules
+- Encrypting stored data
+- Deferring binding time
+
+[single] Modifiability is about:
+- The number of modifications per release
+* The cost of change
+- The time to failure
+- The size of the code base
+
+[multi] The modifiability slide asks what can change and when it is made. Which of these answer WHEN?
+* During implementation, by modifying the source code
+* At compile time, using compile-time switches
+* At build time, by choice of libraries
+* During configuration setup
+* During execution, by parameter setting
+- The functions that the system computes
+- The platform the system exists on
+- The environment within which the system operates
+- A developer, an end user or a system administrator
+
+[multi] Which pairings of a non-functional property and a metric match the book?
+* Speed: transactions per second
+* Reliability: mean time to failure
+* Ease of use: training time
+* Robustness: time to restart after failure
+- Portability: screen refresh time
+- Speed: training time
+- Ease of use: time to restart after failure
+- Reliability: number of target systems
+
+# --- UML: Activity diagram ---
+# DEMO SLIDES: Lecture2-ActivityDiagram.
+
+[single] In an Activity diagram, what do fork and join nodes represent?
+* The start and synchronisation of parallel flows
+- A decision between alternatives and the merge of those alternatives
+- The initial node and the final node of the whole activity
+- The sending and receiving of messages between two lifelines
+
+[single] In an Activity diagram, what does a decision node (diamond) represent?
+- The start of parallel flows that all run at the same time
+* Choice between alternative flows based on guards
+- The synchronisation of parallel flows into one single flow
+- The end of one flow while the rest of the activity continues
+
+[single] What are swimlanes (partitions) in an Activity diagram used for?
+- Showing timing constraints on each action of the activity in the diagram
+* Showing which actor or organizational unit is responsible for actions
+- Showing the inheritance hierarchy of the classes used by the activity's actions
+- Showing the deployment nodes on which the activity's actions are executed
+
+# =============================================================================
+# LECTURE 3: Agile and other software process models
+# Sources: slides L3, book chapters 2 and 3
+# (L1's course plan lists agile as lecture 4. The numbering here follows the deck.)
+# =============================================================================
+
+# --- Software process ---
+
+[multi] Which statements about a software process are true?
+* It is the way an organisation, team or individual carries out software engineering
+* It may be formally documented or informally agreed
+* Every organisation has one, even if it is not written down
+* Organisations may adopt, tailor or define their own
+- It exists in an organisation once it has been written down
+- One universal process suits every kind of software
+- Organisations are not allowed to tailor a known framework
+
+[multi] A software process description usually contains:
+* Activities (what is done)
+* Artifacts (what is produced or used)
+* Actors/roles (who is involved)
+- Contracts (what is paid for)
+- Competitors (who else offers it)
+- Hardware (what it runs on)
+
+[single] Software life-cycle models primarily emphasize:
+- The cost of each developer per activity and phase
+* How the main activities are ordered over time
+- The choice of programming language for each activity
+- The structure of classes in the final implementation
+
+[multi] Which are characteristics of the sequential life-cycle model?
+* Activities are organised as phases
+* Each phase is completed before the next one starts
+* Documents are reviewed, approved and frozen
+* Changes go through formal change management
+- Requirements are refined in each short iteration
+- Changes are agreed informally between developers
+- Phases overlap and run in parallel by design
+
+# --- Waterfall ---
+
+[single] What is the key assumption of the waterfall model?
+* If early phases are done carefully enough, later rework can be minimised
+- If requirements change often, short iterations can keep rework at a minimum
+- If customers join the team, documentation can be reduced to a bare minimum
+- If tests are written first, integration problems can be eliminated early on
+
+[order] Order the stages of the waterfall model as given in the book:
+- Requirements analysis and definition
+- System and software design
+- Implementation and unit testing
+- Integration and system testing
+- Operation and maintenance
+
+[multi] Which are advantages of the waterfall model?
+* Easy to understand and explain
+* Clear milestones and deliverables
+* Extensive documentation and traceability
+* Fits many contract and procurement models
+- Early feedback from users
+- Early discovery of integration problems
+- Low cost of late requirements changes
+
+[multi] Which are disadvantages of the waterfall model?
+* It assumes requirements can be known early
+* Feedback from users arrives late
+* Integration and performance problems may appear late
+* Late changes can require updates to many documents and artifacts
+- It has no clear milestones or deliverables
+- It produces too little documentation
+- It is hard to fit into contract and procurement models
+
+[multi] When is the waterfall model appropriate?
+* Requirements are well understood
+* Expected changes are limited
+* Formal approval gates are important
+* A customer or regulator requires phase-based control
+- Requirements are highly uncertain
+- Frequent feedback from users is needed
+- The team favours minimal documentation
+
+[single] Which system type does the book name as an appropriate fit for the waterfall model?
+* Embedded and critical systems, and large systems built by several partner companies
+- Consumer web products, and mobile applications updated by a small team every week
+- Throwaway prototypes, and small business systems with rapidly changing requirements
+- Startup products, and other software whose requirements are discovered by experiment
+
+[single] Which is the longest life-cycle phase in the waterfall model according to the book?
+- Requirements analysis
+- Implementation
+- System testing
+* Operation and maintenance
+
+[single] In Sommerville's process view, plan-driven processes are those where:
+* All activities are planned in advance and progress is measured against the plan
+- Planning is incremental and continual, and the plan changes with the customer's needs
+- Planning happens after each delivery, and progress is measured against user feedback
+- Requirements are collected during operation and planned into the next software release
+
+# --- Iterative and incremental ---
+
+[single] What distinguishes iterative from incremental development?
+* Iterative repeats development cycles, incremental grows the product by adding useful functionality
+- Incremental repeats development cycles, iterative grows the product by adding useful functionality
+- Iterative is plan-driven and has fixed phases, incremental is agile and has no planning activity at all
+- Iterative produces documents in each cycle, incremental produces working software in the last cycle
+
+[multi] What is true about an iteration in iterative/incremental development?
+* Each iteration is a development cycle
+* Each iteration produces stable, integrated, tested software
+* It acts as a small project: clarify, design, implement, integrate, test, review
+- Testing is concentrated in the last iteration
+- Integration is postponed to the final iteration
+- Each iteration delivers documents, and working software comes at the end
+
+[multi] Which are advantages of iterative/incremental development?
+* Customer value can be delivered earlier
+* Stakeholders can give feedback on working software
+* Performance and integration issues can appear earlier
+* Tested software becomes a meaningful progress indicator
+- It is easier to plan and control than waterfall
+- Less repeated testing is required
+- Less experienced staff are sufficient
+
+[multi] Which are drawbacks of iterative/incremental development?
+* It can be harder to plan and control
+* It requires repeated planning and repeated testing
+* It may require more experienced staff
+* The architecture must support change
+- Customer feedback arrives late in the project
+- Integration problems are discovered late
+- Working software appears late in the project
+
+[multi] Which management problems of incremental development does the book name?
+* The process is not visible
+* System structure tends to degrade as increments are added
+- Customers get working software too early
+- It cannot cope with changing requirements
+
+[single] What does the book name as the agile answer to structural degradation?
+- More documentation
+- Formal verification
+* Refactoring
+- Longer iterations
+
+[single] According to the slides, should a prototype become the foundation of the final system?
+- Yes, it saves the cost of a separate implementation
+* No, prototypes often have poor internal structure
+- Yes, provided it was built in the same language
+- No, unless it is an embedded system with scarce hardware
+
+[multi] For what can a prototype be used, according to the slides?
+* Requirements elicitation
+* Requirements consistency checking and validation
+* Exploring design options
+* Developing a UI design
+- Serving as the foundation of the final system
+- Documenting the final architecture
+- Replacing acceptance by the customer
+
+[multi] What may be left out or relaxed in a prototype (book)?
+* Some functionality
+* Non-functional requirements such as response time
+* Error handling
+* Full reliability and quality standards
+- Explicit objectives of the prototype
+- Definition of the prototype's functionality
+- Evaluation of the prototype
+> The objectives should be made explicit from the start.
+
+[order] Order the stages of prototype development (book):
+- Establish prototype objectives
+- Define prototype functionality
+- Develop prototype
+- Evaluate prototype
+
+[multi] Which statements about incremental delivery (book) are true?
+* Increments are deployed in the customer's real working environment
+* Highest-priority services are delivered first
+* Requirements for the current increment are fixed
+- It suits the replacement of a whole existing system
+- Lowest-priority services are delivered first
+- Requirements for the current increment keep changing during its development
+
+[single] Which two approaches does the book name to reduce the cost of rework?
+- Code refactoring and code inspection
+* Change anticipation and change tolerance
+- Waterfall and spiral process models
+- Pair programming and test-first development
+
+# --- Spiral, RUP, Synch-and-Stabilise, reuse ---
+
+[multi] Which statements about Boehm's spiral model are true?
+* Each loop in the spiral represents a phase of the process
+* There are no fixed phases such as specification or design
+* Risks are explicitly assessed and resolved throughout the process
+- It is a strictly sequential model
+- It was introduced in the Agile Manifesto
+- Each project repeats the same fixed sequence of loops
+
+[single] What is the distinguishing feature of Boehm's spiral model?
+* Explicit, risk-driven process
+- Pair programming with collective ownership
+- Daily stand-up meetings in fixed sprints
+- Formal mathematical specification of the code
+
+# PAST TEST (Q3). UNSURE: the original had two defensible options, since Scrum (1995) also
+# fits between Spiral and RUP. The order here avoids that. Years are not on the slides.
+[order] Order these from oldest to newest:
+- Waterfall model
+- Boehm's spiral model
+- Rational Unified Process
+- Agile Manifesto
+> Roughly 1970, 1986-88, 1998 and 2001. The years are context, not on the slides.
+
+[order] Order the RUP phases:
+- Inception
+- Elaboration
+- Construction
+- Transition
+
+[multi] Which statements about the Rational Unified Process are true?
+* It combines waterfall-like phases with iterative development
+* It is commonly associated with UML
+* It is iterative and incremental, but often document-heavy
+* It was developed by Rational and later associated with IBM
+- Each workflow runs in exactly one phase
+- Its phases contain no iterations
+- It is a lightweight, documentation-free process
+
+[single] On the RUP diagram, what does the horizontal axis show, with workflows on the vertical?
+* Phases and iterations over time
+- Team members assigned to each workflow
+- Costs per requirement and per release
+- Risks per component of the system
+
+[single] RUP's three perspectives in the book are:
+* Dynamic, static and practice
+- Logical, physical and process
+- User, system and developer
+- Context, container and code
+
+[multi] Which statements about Microsoft's Synchronise-and-Stabilise are true?
+* It is an example of a company-specific process
+* It starts with a product vision and a high-level specification
+* Teams work in parallel on a small number of builds
+* In the sync part, work is integrated regularly and tests are run, as a precursor of continuous integration
+- In the stabilise part, new features are added as quickly as possible
+- Teams work strictly one after another
+- It is an open standard published by a standards body
+
+[multi] In the Stabilise part of Synchronise-and-Stabilise, teams:
+* Restrict new feature work
+* Focus on testing, debugging and fixing the build
+- Write the product vision
+- Extend the feature list
+
+[order] Order the stages of reuse-oriented software engineering (slides):
+- Component analysis
+- Requirements modification
+- System design with reuse
+- Development and integration
+
+[single] What does COTS stand for?
+- Component-Oriented Testing Standard
+- Cost Of Technical Support
+* Commercial-off-the-shelf
+- Controlled Output Test Suite
+
+[multi] Which statements about integration and configuration match the book?
+* Advantage: less software to develop, so reduced cost and risk
+* Advantage: usually faster delivery
+* Disadvantage: requirements compromises are inevitable
+* Disadvantage: loss of control over the evolution of reused components
+- Disadvantage: most software must be written from scratch
+- Advantage: full control over the evolution of reused components
+- Advantage: requirements can be met without any compromise
+
+[multi] Which types of reusable components does the book name?
+* Stand-alone application systems
+* Collections of objects, such as frameworks
+* Web services
+- Requirements documents
+- Test plans
+- Process models
+
+[multi] What does the slide say about AI-assisted software engineering?
+* It supports code generation, test generation, documentation and review suggestions
+* Evidence suggests benefits for some well-specified tasks
+* Generated artefacts may be incorrect, insecure or contextually unsuitable
+* Human review, testing and validation remain essential
+- It removes the need for validation
+- Evidence shows the same benefits for every kind of task
+- Generated artefacts are secure by default
+
+# --- Process activities (book 2.2) ---
+
+[multi] Which are the activities of software specification in chapter 2?
+* Requirements elicitation and analysis
+* Requirements specification
+* Requirements validation
+- Requirements refactoring
+- Requirements deployment
+- Requirements retirement
+
+[multi] Which are the design activities for information systems (book)?
+* Architectural design
+* Database design
+* Interface design
+* Component selection and design
+- Market analysis
+- Requirements elicitation
+- Beta testing
+
+[order] Order the testing stages (book):
+- Component testing
+- System testing
+- Customer testing
+
+[single] What does the book say about debugging and defect testing?
+* Testing establishes the existence of defects, debugging locates and corrects them
+- Debugging establishes the existence of defects, testing locates and corrects them
+- Testing and debugging are one and the same process carried out by the developers
+- Testing is done by the developers, debugging is done by the customers after release
+
+[single] What is beta testing?
+- Developers testing their own components in isolation from the others
+- Testing the integrated system with mock data by an internal test team
+* Delivering a system to potential customers who report problems
+- Testing a throwaway prototype with a small group of the developers
+
+# --- Agile Manifesto and principles ---
+
+# PAST TEST (Q1), extended.
+[multi] Which are characteristics of agile development?
+* Iterative approach
+* Incremental approach
+* Embracing change in requirements
+* Frequent delivery of the system to the customer
+- Controlled and rigorous development process
+- Formalized quality assurance
+- Complete specification before coding starts
+- Detailed design documentation
+
+[multi] Which are values of the Agile Manifesto?
+* Individuals and interactions over processes and tools
+* Working software over comprehensive documentation
+* Customer collaboration over contract negotiation
+* Responding to change over following a plan
+- Processes and tools over individuals and interactions
+- Comprehensive documentation over working software
+- Contract negotiation over customer collaboration
+- Following a plan over responding to change
+
+[multi] Which are principles of agile methods (slides and book)?
+* Customer involvement
+* Incremental delivery
+* People not process
+* Embrace change
+* Maintain simplicity
+- Comprehensive planning up front
+- Process not people
+- Freeze requirements early
+
+[single] In which agile principle should team members develop their own ways of working without prescriptive processes?
+- Customer involvement
+* People not process
+- Maintain simplicity
+- Incremental delivery
+
+[multi] Which common characteristics of agile methods does the book list?
+* Specification, design and implementation are interleaved
+* The system is developed in a series of increments
+* Extensive tool support is used
+- Requirements are frozen before implementation
+- Comprehensive design documentation is produced
+- Formal meetings are preferred to informal communication
+
+[multi] Which are common points of all agile methods according to the slides?
+* Iterative and incremental process
+* Adaptive planning
+* Effective communication and stakeholder engagement
+* Short development cycle allowing regular delivery of software
+- Heavy up-front design
+- Long release cycles
+- Prescriptive fixed plans
+
+[single] What is time-boxing?
+* Fixing the iteration end date and not allowing it to change
+- Fixing the scope of an iteration and letting its end date slip
+- Limiting each meeting in an iteration to fifteen minutes at most
+- Scheduling longer working hours so that the deadline can be met
+
+[single] What happens when a time-boxed iteration cannot fit all planned work?
+- The end date slips until the planned work has been completed
+- The team works longer hours so that the whole scope still fits into it
+* The scope is reduced, and lower-priority requests go back on the wish list
+- The iteration is cancelled and its work is planned again from scratch
+
+# UNSURE: the slide gives 1-6 weeks for a time-boxed iteration. The Scrum picture says 1-4
+# week sprints and the book says usually 2-4 weeks. The answer below uses the time-boxing slide.
+[single] What is the normal length of a time-boxed iteration according to the time-boxing slide?
+* 1-6 weeks
+- 1-3 days
+- 3-6 months
+- 1 year
+> Scrum is narrower: the framework picture shows 1-4 week sprints, and the book says usually 2-4 weeks.
+
+[multi] Which are benefits of agile development in the slides?
+* Customer satisfaction by continuous delivery of software
+* Greater flexibility and adaptability to change
+* Close cooperation between stakeholders and developers
+* Focus on business value
+- Less need for customer involvement
+- More complete documentation
+- A long-term vision that is easier to keep
+
+[multi] Which are problems and challenges of agile development?
+* The project can go off track if the stakeholder is not clear about the final outcome
+* It can be difficult to keep customers involved
+* Documentation tends to get sidetracked
+* It needs care when scaling to large systems
+* Maintaining simplicity requires extra work
+- Working software is delivered too rarely
+- Requirements changes are refused
+- Customers are kept away from the team
+
+[multi] Which are named most-used agile methods in the slides?
+* Scrum
+* Kanban
+* Extreme Programming (XP)
+* Feature Driven Development (FDD)
+* Test Driven Development (TDD)
+- Waterfall
+- RUP
+- Spiral
+
+[multi] Which systems are agile methods most successful for (book)?
+* Small or medium-sized products for sale
+* Custom system development within an organization with a committed customer and few external rules
+- Large safety-critical systems with heavy external regulation
+- Systems developed under a fixed, detailed legal contract
+
+[multi] Which conditions favour a plan-driven rather than an agile approach (book)?
+* A large system with a long lifetime
+* Heavy external regulation
+* A contract that needs a detailed specification
+* A team distributed across several sites
+- A small co-located team
+- A committed customer available on site
+- Requirements that are likely to change
+- A small product for sale
+
+# --- Agile practices ---
+
+[single] Which is the standard format of a user story?
+* As a <type of user>, I want <some goal> so that <some reason>.
+- Given a class, when a method is called, then return a value.
+- The system shall provide <function> to <type of user> within <time>.
+- Actor -> Use case -> Precondition -> Main flow -> Postcondition.
+
+[multi] Which statements about user stories are true?
+* It is the smallest unit of work in an agile framework
+* It is an informal, natural-language description of a feature or desired outcome
+* It may be written by clients, users, managers or developers
+* Related user stories can form epics
+- It has to be written in a formal notation
+- It may be written by the development team alone, and by no other stakeholder
+- Related epics form a user story
+
+[single] What is the principal problem of user stories according to the book?
+- People relate to them less easily than to formal documents
+* Completeness: experienced users omit things
+- They need a formal notation that customers cannot read
+- They are written by customers, so they cannot be prioritized
+
+[multi] Which are Extreme Programming practices?
+* Pair programming
+* Test-first development
+* Refactoring
+* Continuous integration
+* Small releases
+* Sustainable pace
+- Big design up front
+- Individual code ownership
+- Detailed requirements documents
+- Formal phase sign-off
+
+[single] Which is an advantage of pair programming in the book?
+* Collective ownership and an informal review of every line of code
+- A pair produces twice as much code as two individuals working alone
+- It replaces formal testing, since two people have seen all of the code
+- It removes the need for refactoring, since the design is right at first
+
+[single] What is refactoring?
+- Rewriting the whole system from scratch in a newer technology
+* Improving the software's structure without changing its behaviour
+- Adding new features to the software without changing its structure
+- Fixing the reported bugs before the team starts a new increment
+
+[multi] Which are benefits of test-first development in the book?
+* Tests implicitly define the interface and behaviour specification
+* Ambiguities are clarified before implementation
+* Test-lag is avoided
+- Test suites are complete, so correctness is guaranteed
+- Display logic and workflows become easy to unit-test
+- Customers no longer take part in acceptance testing
+
+[order] Order the steps of the test-driven development cycle:
+- Write a test for the required behaviour
+- Run the test and see it fail
+- Write code so that the test passes
+- Refactor the code
+
+[multi] Which are the Scrum roles?
+* Product Owner
+* Scrum Master
+* Development Team
+- Project Manager
+- Chief Architect
+- Release Manager
+> The ScrumMaster is not a project manager, though the book notes that it often acts as one.
+
+[single] Who identifies and prioritizes features and continuously reviews the product backlog?
+* Product Owner
+- Scrum Master
+- Development Team
+- Test Lead
+
+[single] Who ensures the Scrum process is followed and shields the team from outside interference?
+- Product Owner
+* Scrum Master
+- Customer
+- Lead Developer
+
+[single] What is the product backlog?
+* A prioritized list of all product requirements that the team maintains for a product
+- The list of tasks selected to be completed by the team during the next sprint
+- The list of defects found during a sprint, ordered by the severity of each defect
+- The list of finished work that has already been shown to the product owner
+
+[single] What is the sprint backlog?
+- The prioritized list of all product requirements that the team maintains
+* The list of tasks from the product backlog to be completed during the next sprint
+- The list of past sprints, together with the velocity reached in each one of them
+- The chart of the remaining work against the ideal progress through the sprint
+
+[single] What is the daily Scrum?
+- A one-hour weekly event where the team reports the status of its tasks to the managers
+* A 15-minute time-boxed event to synchronize activities and plan the next 24 hours
+- A 15-minute event at the end of each sprint to demonstrate software to stakeholders
+- A half-day event at the end of each sprint to agree on process improvement actions
+
+[multi] What does every team member answer in the daily Scrum?
+* What did I work on yesterday?
+* What am I working on today?
+* What issues are blocking me?
+- How much will the next release cost?
+- Which features should the product owner drop?
+- Which process should change next sprint?
+
+[single] Which Scrum event demonstrates the working software to the product owner and stakeholders?
+- Sprint planning
+- Daily Scrum
+* Sprint review
+- Sprint retrospective
+
+[single] In which Scrum event does the team reflect on the past sprint and agree on process improvement actions?
+- Sprint planning
+- Daily Scrum
+- Sprint review
+* Sprint retrospective
+
+[order] Order the elements of a Scrum sprint:
+- Sprint planning meeting
+- Sprint execution with daily Scrums
+- Sprint review
+- Sprint retrospective
+
+[multi] Which statements about a sprint, per the book, are true?
+* It has a fixed length
+* It is never extended
+* Unfinished items are returned to the product backlog
+- It is extended when items are unfinished
+- Unfinished items are removed from the product backlog
+- Scrum mandates specific technical programming practices
+
+[multi] What are burn-down and burn-up charts in Scrum for?
+* Visualizing the remaining or completed work over time
+* Comparing ideal and actual progress
+- Assigning tasks to team members
+- Replacing the product backlog
+
+[single] In Scrum (book), what is velocity?
+- The number of defects that a team fixes during one working day
+* An estimate of how much backlog effort a team can cover in one sprint
+- The number of commits that a team makes during one complete sprint
+- The number of stories that the customer adds to the backlog each sprint
+
+[multi] Which statements about the book's Scrum are true?
+* The development team is self-organizing and has no more than seven people
+* A sprint's output is a potentially shippable product increment
+* A sprint is usually 2-4 weeks long
+- The ScrumMaster assigns tasks top-down at the daily Scrum
+- A sprint's output is a design document for the next sprint
+- A sprint is usually 3-6 months long
+
+[multi] Which statements about Kanban are true?
+* Work items are visualized on a Kanban board
+* It skips the concept of iterations
+* It relies on advanced tooling for continuous building, integration and deployment
+* Its two main practices are visualizing work and limiting work-in-progress
+- It uses fixed four-week sprints
+- Its main practice is time-boxing
+- It leaves work-in-progress unlimited
+
+[multi] Which are principles of Feature-Driven Development?
+* Domain object modeling
+* Developing by feature
+* Individual class ownership
+* Feature teams
+* Inspections
+- Collective code ownership
+- Pair programming
+- Test-first development
+> Collective ownership is an XP practice. FDD uses individual class ownership.
+
+[single] For which projects is FDD ideal, according to the slides?
+* Long-term, complex projects looking for a simple but comprehensive methodology
+- Throwaway prototypes that need quick results and leave no lasting documentation
+- Solo hobby projects that have no domain model and no team of any kind to organise
+- Short experiments whose outcome is unclear and whose scope changes from day to day
+
+[single] Which agile method skips iterations altogether?
+- Scrum
+- XP
+* Kanban
+- FDD
+
+# --- Scaling agile (book 3.4) ---
+
+[multi] Which are practical problems with agile for large, long-lifetime systems (book)?
+* Informality is incompatible with legal contract definition
+* Agile suits new development rather than maintenance
+* Agile was designed for co-located rather than distributed teams
+- Agile produces too much documentation
+- Agile suits maintenance rather than new development
+- Agile needs contracts with detailed fixed requirements
+
+[single] What do "scaling up" and "scaling out" mean in the book?
+* Scaling up means large systems, scaling out means use across a large company
+- Scaling out means large systems, scaling up means use across a large company
+- Scaling up means adding more servers, scaling out means adding more processes
+- Scaling up means more iterations per release, scaling out means fewer per release
+
+[multi] Which factors of large systems complexity does the book list?
+* Systems of systems
+* Brownfield development
+* External regulation
+* Prolonged procurement
+* Diverse stakeholders
+- Very small teams
+- Short procurement
+- A single stakeholder
+
+[multi] Which are common approaches when scaling Scrum to multiple teams (book)?
+* Role replication
+* Product architects
+* Release alignment
+* Scrum of Scrums
+- Removing daily meetings
+- One product owner for all teams
+- Independent release dates per team
+
+[multi] What do large projects typically add when scaling agile (book)?
+* Some up-front requirements
+* More up-front design and documentation
+* Cross-team communication mechanisms
+* Frequent system builds and regular releases
+- A single product owner for everything
+- Continuous integration of the whole system at every check-in
+- Less documentation than in small projects
+
+# =============================================================================
+# LECTURE 4: Analysis and design
+# Sources: slides L4, book chapter 7 (sections 7.1.1-7.1.4)
+# (L1's course plan lists this as lecture 3. The numbering here follows the deck.)
+# =============================================================================
+
+# --- Analysis, design, implementation ---
+
+[single] Which is the correct definition of software analysis in the slides?
+* A creative activity in which you identify software processes, entities (objects) and their relationships
+- A refining activity in which you extend the existing models with data-access classes and implementation details
+- A programming activity in which you realize the finished design of the system as a working executable program
+- A checking activity in which you confirm that the delivered system meets its requirements and customer needs
+
+[single] Software design:
+- Identifies software processes, entities (objects) and their relationships
+* Refines analytical models with implementation details
+- Realizes the finished models as a working program
+- Establishes the services and constraints of the system
+
+[single] What is true about analysis, design and implementation?
+* They are invariably inter-leaved, with blurred borders between them
+- They are strictly sequential, and each one ends before the next starts
+- They are carried out by separate companies under separate contracts
+- They run in reverse order, with implementation coming before analysis
+
+[order] Order the path from problem to solution in the slides:
+- Requirements
+- Analysis
+- Design
+- Implementation
+- System
+
+[order] Order the common activities of design processes from the slides:
+- Define context and modes of use of the system
+- Draft the system architecture
+- Identify principal system processes and entities
+- Develop design models
+- Specify component/object interfaces
+- Finalize system architecture
+
+[single] What does understanding the system context let you establish?
+* The boundaries of the system
+- The final database schema
+- The programmers' salaries
+- The exact test coverage
+
+[single] What is a system context model?
+* A structural model demonstrating the users and other systems in the environment of the system
+- A dynamic model showing how the system interacts with its environment as it is being used
+- A structural model showing the classes, methods and attributes of the system's implementation
+- A deployment model showing the servers and networks on which the system's components will run
+
+[single] What is an interaction model?
+- A structural model demonstrating the users and other systems in the environment of the system
+* A dynamic model showing how the system interacts with its environment as it is used
+- A structural model showing how the system is decomposed into subsystems and their packages
+- A data model showing the data stores and the entities that the system keeps for its users
+
+# --- Architectural design ---
+
+[multi] What does architectural design involve?
+* Identifying major system components and their communications
+* Representing the link between requirements specification and analysis/design
+- Writing the unit tests
+- Choosing variable names
+
+[single] Which phrase do the slides use about software architecture?
+- It is the cheapest part of a system to change later on
+* It gives answers to the most expensive questions
+- It is needed by embedded systems with limited hardware
+- It should be finished after the implementation is done
+
+[single] "Architecture in the small" is concerned with:
+* The architecture of individual programs and their decomposition into components
+- Complex enterprise systems that include other systems, programs and program components
+- Systems distributed over computers owned and managed by several different companies
+- Enterprise integration of the separate product lines that a company has on the market
+
+[single] "Architecture in the large" is concerned with:
+- The architecture of individual programs and their decomposition into several components
+* Complex enterprise systems that include other systems, programs and program components
+- The naming conventions and function layout that the developers follow in a single program
+- The structure of one class, including the visibility of its attributes and of its operations
+
+[multi] Which are advantages of an explicit architecture?
+* Stakeholder communication and project planning
+* System analysis, i.e. whether non-functional requirements can be met
+* System documentation
+* Large-scale reuse, such as product-line architectures
+- Eliminating the need for testing
+- Removing the need for a requirements specification
+- Guaranteeing that the implementation is correct
+
+[multi] What does the book say about the listener model of the weather station?
+* Subsystems broadcast on a common infrastructure and pick up intended messages
+* A key benefit is easy support for different configurations
+- Senders must address a particular subsystem
+- All subsystems share a single thread
+
+# --- System analysis and design models ---
+
+[multi] What does system analysis involve?
+* Identification of system entities and their relationships
+* Distillation and documentation of key system processes
+- A magic formula that always gives the right model
+- Writing production code
+
+[single] Why is object and relationship identification described as iterative?
+* You are unlikely to get it right the first time
+- The law requires each model to be reviewed twice
+- Objects change their classes while the system runs
+- UML tools allow only one change per each iteration
+
+[multi] Which ways of identifying object classes does the book list?
+* Grammatical analysis: nouns as objects or attributes and verbs as operations
+* Tangible entities, roles, events, interactions, locations and organizational units
+* Scenario-based analysis
+- Sorting source files by their size
+- Deriving classes from the deployment diagram
+- Deriving classes from the compiler's output
+
+[single] Static models describe:
+* The static structure of the system in terms of entities and relationships
+- The dynamic interactions that happen between the entities of the system
+- The order and timing of messages exchanged by entities while the system runs
+- The sequence of states an object passes through during its whole lifetime
+
+[single] Dynamic models describe:
+- The static structure of the system in terms of entities and relationships
+* The dynamic interactions between entities
+- The packages of the system and the dependencies between them
+- The database schema and the hardware the system is deployed on
+
+[multi] What do design models add to analysis models, according to the slides?
+* Dependencies
+* Interfaces
+* Data-access classes
+* GUI classes
+- Stakeholder interviews
+- MoSCoW priorities
+- Business goals
+
+[multi] Which UML model types does the book use for detailing use case and architectural models?
+* Subsystem models
+* Sequence models
+* State machine models
+- Gantt chart models
+- Data flow models
+- Entity relationship models
+
+[multi] Which statements about design model detail (book) are true?
+* Agile or closely linked teams can use more abstract models
+* Plan-based or indirectly linked teams need detailed, precise models
+* You should minimize the number of models to reduce cost
+- UML defines exactly three model types
+- Plan-based teams can use more abstract models than agile ones
+- You should create as many of the UML model types as possible
+
+# --- Structured vs object-oriented ---
+
+[multi] Which are fundamental views of software systems in the slides?
+* Function oriented view
+* Data oriented view
+* Object oriented view
+- Hardware oriented view
+- Deployment oriented view
+- Test oriented view
+
+[single] Which view sees the system as a set of interacting objects encapsulating both data and operations?
+- Function oriented view
+- Data oriented view
+* Object oriented view
+- Process view
+
+[single] Which view treats the system as a set of interacting functions, with processes linked by data and control flows?
+* Function oriented view
+- Data oriented view
+- Object oriented view
+- Deployment view
+
+[single] Which view searches for fundamental data structures, with functional aspects less significant?
+- Function oriented view
+* Data oriented view
+- Object oriented view
+- Agile view
+
+[single] Structured analysis is driven by:
+* The function oriented view, in synergy with the data oriented view, through functional decomposition
+- The object oriented view, in synergy with the data oriented view, through inheritance and polymorphism
+- The object oriented view, in synergy with the use case view, through identification of analysis classes
+- The deployment oriented view, in synergy with the object oriented view, through component replacement
+
+[single] Object-oriented analysis is driven by:
+- The function oriented view
+- Functional decomposition
+* The object oriented view
+- Data flow diagrams
+
+[multi] Which statements about structured analysis and design are true?
+* It divides a project into small, well-defined activities and defines their order and interaction
+* It uses hierarchical graphical techniques
+* It simplifies time and effort estimates and project management
+- It models a system as a group of interacting objects
+- It encapsulates data and operations in classes
+- It is driven by use cases and interaction diagrams
+
+[multi] Which are the core notations of structured methods?
+* Context diagram
+* Data flow diagram
+* Entity relationship diagram
+* State diagram
+- Sequence diagram
+- Use case diagram
+- Activity diagram
+- Class diagram
+
+[single] Which structured-method notation models the system as a network of processes completing functions and accessing data?
+- Context diagram
+* Data flow diagram
+- Entity relationship diagram
+- State diagram
+
+[single] Which structured-method notation models the system's boundary and environment?
+* Context diagram
+- Data flow diagram
+- Entity relationship diagram
+- State diagram
+
+[multi] Which elements appear in a data flow diagram example from the slides?
+* Terminator
+* Process
+* Data flow
+* Data store
+- Lifeline
+- Actor
+- Swimlane
+
+[single] In functional decomposition, what does the data dictionary accompany at the lowest level?
+- Use case descriptions
+* Basic-process specifications
+- Class diagrams
+- Sprint backlogs
+
+[multi] Which models does Yourdon's modern structured analysis consist of?
+* Environment model
+* Behavioral model
+* Data model
+- Deployment model
+- Component model
+- Test model
+
+[single] An object in object-oriented analysis is characterized by:
+* Its class, its state and its behavior
+- Its table, its row and its primary key
+- Its process, its data flow and its data store
+- Its lifeline, its messages and its fragments
+
+# --- UML diagram families ---
+
+[multi] Which diagrams belong to the UML STRUCTURAL perspective?
+* Class diagram
+* Object diagram
+* Component diagram
+* Package diagram
+* Deployment diagram
+* Composite structure diagram
+- Sequence diagram
+- Activity diagram
+- Use case diagram
+- Timing diagram
+
+[multi] Which diagrams belong to the UML INTERACTION perspective?
+* Sequence diagram
+* Communication diagram
+* Interaction overview diagram
+* Timing diagram
+- Activity diagram
+- Class diagram
+- State diagram
+- Deployment diagram
+
+[multi] Which diagrams belong to the UML BEHAVIORAL perspective in the slides?
+* Activity diagram
+* State diagram
+- Component diagram
+- Object diagram
+
+[single] Which diagram gives the UML external perspective?
+* Use case diagram
+- Class diagram
+- Sequence diagram
+- State diagram
+
+[single] Which structured notation corresponds to the use case diagram for modelling the system boundary?
+* Context diagram
+- Data flow diagram
+- Entity relationship diagram
+- State diagram
+
+[single] Which object-oriented notations correspond to data flow diagrams for modelling functionality?
+- Class and object diagrams
+* Activity and interaction diagrams
+- Component and deployment diagrams
+- Use case and composite structure diagrams
+
+[single] Which object-oriented notations correspond to entity-relationship diagrams for modelling data?
+- Activity and sequence diagrams
+- Use case diagrams
+* Class and object diagrams
+- State diagrams
+
+[single] Which notation is used for modelling control in both structured and object-oriented analysis?
+- Use case diagram
+- Data flow diagram
+* State diagram
+- Package diagram
+
+[order] Order the steps of the exemplary method (RUP) from the L4 slides:
+- Requirements: system boundary, actors and requirements modelling
+- Analysis: analysis classes and relationships
+- Design: design classes, interfaces and components
+> These steps correspond to RUP workflows. The RUP phases are Inception, Elaboration, Construction and Transition.
+
+[single] In the exemplary method from the L4 slides, in which step do you identify analysis classes, relationships and inheritance?
+- Requirements
+* Analysis
+- Design
+- Deployment
+
+[single] In the exemplary method from the L4 slides, in which step do you model the system boundary and actors with a Use Case diagram?
+* Requirements
+- Analysis
+- Design
+- Transition
+
+# --- UML: Class and Object diagrams ---
+# DEMO SLIDES: Lecture4-ClassObjectDiagrams. This is the
+# notation the lecture decks leave out.
+
+# PAST TEST (Q5)
+[single] Which option best matches relationships to examples in a UML Class diagram?
+* Car-Driver is an association, Car-VolvoXC90 is an inheritance, Car-Engine is a composition
+- Car-Driver is an association, Car-VolvoXC90 is a composition, Car-Engine is an inheritance
+- Car-Driver is an inheritance, Car-VolvoXC90 is an association, Car-Engine is a composition
+- Car-Driver is a composition, Car-VolvoXC90 is an inheritance, Car-Engine is an association
+
+[single] What is the difference between composition and aggregation in a UML Class diagram?
+* In composition the part's lifetime depends on the whole, in aggregation the part can exist independently
+- In aggregation the part's lifetime depends on the whole, in composition the part can exist independently
+- Composition is drawn with a hollow diamond and is weaker than aggregation, drawn with a filled diamond
+- Aggregation is a relationship between actors, composition is a relationship between use cases in a diagram
+
+[single] What does a hollow triangle arrowhead on a solid line mean in a Class diagram?
+- Composition of a part into a whole
+- Dependency of a client on a supplier
+* Generalization (inheritance)
+- Association between two classes
+
+[single] What does a dashed line with a hollow triangle arrowhead mean in a Class diagram?
+- Inheritance from a parent class
+* Realization of an interface
+- Composition of a part into a whole
+- Aggregation of a part into a whole
+
+[single] What does the multiplicity 1..* at one end of an association mean?
+* One or more objects at that end
+- Exactly one object
+- Zero or one object
+- At most one object per class
+
+[single] What do the UML visibility markers +, -, # mean?
+* public, private, protected
+- private, public, protected
+- static, abstract, final
+- protected, private, public
+
+[single] What does a UML Object diagram show?
+* A snapshot of instances and their links at a point in time
+- All possible classes in the system with their attributes and operations
+- The messages exchanged by participants, ordered in time from top to bottom
+- The parallel and alternative flows of the actions within one activity
+
+[single] How does an analysis class diagram differ from a design class diagram?
+* Analysis classes capture domain concepts, while design classes add implementation details such as types and interfaces
+- Design classes capture domain concepts, while analysis classes add implementation details such as types and interfaces
+- Analysis class diagrams contain the operations of the classes, while design class diagrams contain their attributes alone
+- Analysis class diagrams show the deployment of classes, while design class diagrams show who is responsible for each class
+
+# =============================================================================
+# LECTURE 5: Data modelling and management
+# Sources: slides L5. No book chapter.
+# =============================================================================
+
+# --- Data and big data ---
+
+[multi] Which statements about data are true?
+* It is information converted into binary digital form
+* It can be created, processed, saved and stored digitally
+* Compared to analog information, it does not deteriorate over time
+- It loses quality after being used multiple times
+- It cannot be transferred from one computer to another
+- It is limited to numeric values
+> The slides describe the chain Data -> Information -> Knowledge -> Value.
+
+[multi] Which statements about Big Data are true?
+* It is a collection of data that is huge in size or growing exponentially with time
+* It is difficult or impossible to process with traditional database and software tools
+- It always fits in one relational table
+- It can only contain numbers
+
+# UNSURE: the slide's fifth V is "Variability". Many sources use "Value" instead, so "Value"
+# is deliberately not offered here. Veracity on the slide reads "data is validated and verified".
+[multi] Which of the 5 V's of Big Data are listed in the slides?
+* Volume
+* Variety
+* Variability
+* Velocity
+* Veracity
+- Vulnerability
+- Viscosity
+- Versatility
+- Verbosity
+> The slides use Variability as the fifth V. Many other sources use Value instead.
+
+[single] Which Big Data characteristic means "data is generated very fast"?
+- Volume
+- Variety
+* Velocity
+- Veracity
+
+[single] Which Big Data characteristic means "various sources and formats of data"?
+- Volume
+* Variety
+- Velocity
+- Veracity
+
+[single] Which Big Data characteristic means "data can be inconsistent and unpredictable"?
+* Variability
+- Velocity
+- Veracity
+- Volume
+
+[single] Which Big Data characteristic means "data is validated and verified"?
+- Variety
+- Variability
+- Volume
+* Veracity
+
+# --- Databases ---
+
+[multi] What do the slides say about a database?
+* It is an organised collection of data
+* It supports access, storage and manipulation of data
+* It is controlled by a database management system (DBMS)
+- Its most-used language is HTML
+- It is controlled by a version control system
+- It needs no management software
+
+[multi] Which statements about relational databases are true?
+* They store data as two-dimensional tables with pre-defined relationships
+* The schema must be clearly defined before any information can be added
+* Every row in a table has the same set of columns and a unique key
+* They are queried with SQL
+- Each row may have an entirely different set of columns
+- The schema is defined after the data has been added
+- They are queried with get, put and delete commands
+
+[multi] Which are given as uses or examples of relational databases?
+* Transaction-oriented systems
+* Accounting software
+* PostgreSQL
+* MySQL
+- Neo4j
+- MongoDB
+- Redis
+
+[single] Which NoSQL type stores data as pairs where a unique identifier maps to a value, like a dictionary or hash table?
+* Key-value database
+- Column-family database
+- Document database
+- Graph database
+
+[single] Which NoSQL type organises columns into groups that are logically related and typically retrieved as a unit?
+- Key-value database
+* Column-family database
+- Document database
+- Graph database
+
+[single] Which NoSQL type stores collections of named fields encoded as XML, YAML or JSON?
+- Key-value database
+- Column-family database
+* Document database
+- Graph database
+
+[single] Which NoSQL type stores nodes and edges?
+- Key-value database
+- Column-family database
+- Document database
+* Graph database
+
+[multi] Which statements about key-value databases are true?
+* They use get, put and delete commands rather than a query language
+* They are not optimized for querying by value
+* They suit shopping carts and caching
+- They provide a query language to traverse relationships efficiently
+- They are optimized for querying by value
+- They require a schema before any data can be added
+
+[multi] Which statements about document databases are true?
+* Not all documents must have the same structure
+* Documents can be queried by the value of one or more fields
+* Values can be modified in place without rewriting the whole document
+- Every document must follow one fixed schema
+- Changing a value requires rewriting the whole document
+- Documents cannot be filtered by the value of a field
+
+[multi] Which statements about column-family databases are true?
+* They suit enormous, structured, volatile data
+* Each row is not required to have the same columns
+* They are used in the Internet of Things and security analytics
+- They store nodes and edges
+- Each row is required to have the same columns
+- They store data as a dictionary with no grouping of columns
+
+[multi] Which statements about graph databases are true?
+* Relationships allow linked data to be retrieved with one operation
+* They provide a query language to traverse a network of relationships efficiently
+* They are used for social networks, fraud detection and recommendation
+- They store two-dimensional tables with a fixed schema
+- They store named fields encoded as XML, YAML or JSON
+- They are the slides' example for caching and shopping carts
+
+[single] Which database would best suit a recommendation engine over a social network?
+- Key-value database
+- Column-family database
+- Document database
+* Graph database
+
+[single] Which database would best suit a shopping cart in an e-shop, according to the slides?
+* Key-value database
+- Graph database
+- Relational database with strict joins
+- Column-family database
+
+[single] Which database would best suit user profiles or content management, according to the slides?
+- Graph database
+* Document database
+- Key-value database
+- Column-family database
+
+[single] Which database would best suit stock market or IoT data, according to the slides?
+- Graph database
+- Document database
+* Column-family database
+- Key-value database
+
+[single] Which product is an example of a graph database?
+* Neo4j
+- Redis
+- MongoDB
+- HBase
+
+[single] Which product is an example of a document database?
+- Redis
+* MongoDB
+- HBase
+- Neo4j
+
+[single] Which product is an example of a key-value database?
+- HBase
+- Neo4j
+* Redis
+- MongoDB
+
+[single] Which product is an example of a column-family database?
+- Redis
+- MongoDB
+- Neo4j
+* HBase
+> Cassandra appears in the slides under both key-value and column-family, so it is not offered here.
+
+# --- Data management and governance ---
+
+[multi] What does data management include?
+* Acquiring and validating data
+* Storing and protecting data
+* Processing data to ensure accessibility, reliability and timeliness
+* The entire lifecycle of a data asset, from creation to retirement
+- Creation of data, with retirement left out of its scope
+- Acquiring data without validating it
+- Ending its responsibility once data has been stored
+
+[single] Data governance is:
+* A set of principles and practices that ensure high data quality through the complete data lifecycle
+- A set of laws that regulate how cloud providers may store personal data of their customers abroad
+- A set of indexes that speed up the queries of a relational database through its complete lifecycle
+- A set of backup procedures that protect the company's data against the failure of a storage device
+
+[multi] Which are key goals of data governance?
+* Minimize risks
+* Establish internal rules for data use
+* Implement compliance requirements
+* Increase the value of data
+* Reduce costs
+- Maximize the volume of stored data
+- Maximize the number of data sources
+- Remove internal rules for data use
+
+[single] Where is data governance most relevant, according to the slides?
+* In large enterprises, for security, compliance and business performance
+- In one-person hobby projects, for simple backups of their personal files
+- In research laboratories, for the publication of scientific data sets
+- In the public sector, for the statistics reported to national authorities
+
+[order] Order the stages of the data lifecycle:
+- Data capture / creation
+- Data maintenance
+- Data usage
+- Data publication
+- Data archiving
+- Data purging / destruction
+
+# --- ERD and relational design ---
+# Source: demo slides Lecture5-ERD. The main L5 deck lists these topics in its outline but
+# ends at the data lifecycle. The first five questions were written before the demo slides
+# were available and agree with them.
+
+[multi] Which are basic elements of an entity relationship diagram?
+* Entities
+* Attributes
+* Relationships
+* Cardinalities
+- Lifelines
+- Swimlanes
+- Activation bars
+
+[single] How is a many-to-many relationship typically implemented in a relational database?
+- With a single foreign key placed in either one of the two tables
+* With a junction table holding foreign keys to both tables
+- With one separate table created for each attribute of the two entities
+- With a repeating group of values stored in one column of each table
+
+[single] What is a primary key?
+* A column or set of columns uniquely identifying a row in a table
+- A column or set of columns referencing a row in some other table
+- The first column of a table, whichever values it happens to contain
+- The password needed to log in to the database management system
+
+[single] What is a foreign key?
+- A key imported from another database management system
+* A column referencing the primary key of another table
+- A column whose values are encrypted with an external key
+- A unique identifier of a row in the table that contains it
+
+[single] What is the main goal of database normalization?
+* Reduce redundancy and update anomalies
+- Add duplicate data so that reading becomes faster
+- Bind the table structure to the most common queries
+- Remove the relationships between the tables
+
+[single] Which notation is the concept-level description of an ERD?
+* Chen's notation
+- Crow's Foot notation
+- UML Class diagram notation
+- Data flow notation
+> Crow's Foot is the implementation-level description. An ERD is not a UML diagram.
+
+[single] Which notation is the implementation-level description of an ERD?
+- Chen's notation
+* Crow's Foot notation
+- UML Class diagram notation
+- Data flow notation
+
+[single] Term: a set of attributes that uniquely identifies each entity, possibly with redundant attributes.
+* Superkey
+- Candidate key
+- Primary key
+- Foreign key
+
+[single] Term: a non-redundant set of identifying attributes, from which no attribute can be removed.
+- Superkey
+* Candidate key
+- Primary key
+- Foreign key
+
+[single] Term: the selected candidate key, marked with the # symbol.
+- Superkey
+- Candidate key
+* Primary key
+- Foreign key
+
+[single] Term: a set of attributes in one entity that is a primary key in another entity.
+- Superkey
+- Candidate key
+- Primary key
+* Foreign key
+
+[multi] When mapping an ERD to a relational database, which correspondences hold?
+* An entity type becomes a table
+* An attribute becomes a column
+* An entity becomes a row
+- A relationship always becomes a column
+- An attribute becomes a table
+- An entity type becomes a row
+
+[multi] Which observations point towards modelling a concept as an entity type rather than an attribute?
+* We wish to store information about it other than an identifying name
+* It is multi-valued
+- It is a single-valued detail of one entity
+- It has no smaller parts
+
+[single] Anomaly: the same information is expressed on multiple rows, so a change can leave the data inconsistent.
+* Update anomaly
+- Insertion anomaly
+- Deletion anomaly
+- Transitive anomaly
+
+[single] Anomaly: certain facts cannot be recorded, because they are bound to other information in one record.
+- Update anomaly
+* Insertion anomaly
+- Deletion anomaly
+- Transitive anomaly
+
+[single] Anomaly: removing data representing certain facts forces the removal of unrelated data.
+- Update anomaly
+- Insertion anomaly
+* Deletion anomaly
+- Transitive anomaly
+
+[single] Which normal form requires that there are no repeating groups?
+* 1NF
+- 2NF
+- 3NF
+- None of them
+
+[single] Which normal form requires that there is no partial dependency?
+- 1NF
+* 2NF
+- 3NF
+- None of them
+
+[single] Which normal form requires that there is no transitive dependency?
+- 1NF
+- 2NF
+* 3NF
+- None of them
+
+[single] An employee table has (empl#, name, salary, project, deadline), and the deadline depends on the project. Which form does it violate?
+- 1NF
+- 2NF
+* 3NF
+- None of them
+
+[single] A table has the key (course#, student#) and also stores the student's name. Which form does it violate?
+- 1NF
+* 2NF
+- 3NF
+- None of them
+
+[multi] What are the goals of data normalization by E.F. Codd?
+* Minimize redundancy and dependency
+* Free the database of modification anomalies
+* Avoid bias towards any particular pattern of querying
+- Maximize redundancy to speed up reading
+- Bind the structure to the most common queries
+
+[single] An attribute is fully functionally dependent on a set X if it depends on X and:
+* It does not depend on any proper subset of X
+- It depends on every proper subset of X
+- It depends on no attribute outside X
+- It is itself a member of X
+
+[multi] Which statements compare ERDs and UML Class diagrams correctly?
+* An ERD is data-oriented and persistence-specific
+* A Class diagram also targets operations and is persistence independent
+* One class may map to more than one entity
+- An ERD is persistence independent and targets operations
+- Every class must appear in the ERD
+
+# =============================================================================
+# LECTURE 6: High-level design
+# Sources: slides L6
+# =============================================================================
+
+# --- Purpose ---
+
+[multi] What is the purpose of system design?
+* Refine how functions are implemented and how non-functional requirements are ensured
+* Decide on strategic issues such as concurrency, redundancy, persistence and distribution
+* Create policies to deal with tactical design issues
+- Replace requirements engineering
+- Collect user stories from stakeholders
+- Assign team members to their Scrum roles
+
+[single] What are tactics in software design?
+* Quality-driven design decisions describing best practices for a specific quality attribute
+- Team-building practices describing how developers should cooperate within an agile project
+- Combined fragments describing conditional and repeated behaviour in a UML sequence diagram
+- Planning techniques describing how items are selected for the next sprint of a Scrum team
+
+[single] Which specific and very popular tactic is used during low-level design?
+- Heartbeats
+* Design patterns
+- Protection systems
+- Survivability strategies
+
+# --- Reliability and availability ---
+
+[multi] Which are the approaches to dependability achievement in the slides?
+* Fault avoidance
+* Fault detection
+* Fault tolerance
+- Fault logging
+- Fault reporting
+- Fault ownership
+
+[single] Which approach organises development so that faults are detected and repaired before delivery?
+* Fault avoidance
+- Fault detection
+- Fault tolerance
+- Fault forecasting
+
+[single] What does fault detection refer to in the slides?
+- Verification and validation techniques that discover and remove faults in a system before it is deployed
+* Run-time techniques to detect faults and failures, such as acceptance tests, ping/echo and heartbeat
+- Design techniques that ensure faults in the delivered software do not result in a system failure
+- Process techniques that make development repeatable, so that it is independent of individual skills
+
+[single] Which approach designs the system so that faults in delivered software do not result in failure?
+- Fault avoidance
+- Fault detection
+* Fault tolerance
+- Fault injection
+
+[multi] Which process properties support fault avoidance?
+* A well-defined, repeatable software process
+* A process that can be enacted by different people
+* Significant effort devoted to verification and validation
+- A process that depends entirely on individual skills
+- Leaving verification and validation to the customer
+- Relying on one experienced programmer
+
+[single] What does the fault discovery cost curve show?
+* The cost per detected error rises steeply as fewer residual errors remain
+- The cost per detected error falls steadily as fewer residual errors remain
+- The cost per detected error stays constant however many errors remain
+- The number of residual errors rises steeply as more testing is carried out
+
+[single] Which fault detection tactic: one component issues a request and expects a response within a predefined time?
+* Ping/echo
+- Heartbeat
+- Acceptance test
+- Voting
+
+[single] Which fault detection tactic: a component periodically emits a message and another component listens for it?
+- Ping/echo between two components
+* Heartbeat (dead man timer)
+- Checkpoint of the consistent state
+- Monitoring of logged events
+
+[single] Which fault detection tactic: acceptance checking for methods and code fragments, raising signals for fault handling?
+- Heartbeat
+* Acceptance tests
+- Voting
+- Passive redundancy
+
+[single] Which fault detection tactic: collection, logging and processing of events that may signal problems?
+- Heartbeat (dead man timer)
+- Ping/echo between two components
+* Monitoring and event processing
+- Acceptance tests for code fragments
+
+[single] Why must a system that was proven to conform to its specification still be fault tolerant?
+* There may be specification errors or the validation may be incorrect
+- Proofs of conformance are not accepted by any of the regulatory bodies
+- Fault tolerance adds no complexity, so there is no reason to leave it out
+- Conforming systems run slower, so they need redundant capacity anyway
+
+[single] Where is fault tolerance required?
+* Where there are high availability requirements or where system failure costs are very high
+- Where the system is a prototype, or where the requirements are expected to change frequently
+- Where there are no security requirements, or where the system is used by a small user group
+- Where the system is non-critical, or where a failure can be repaired by the next planned release
+
+[single] Dependable system architectures are generally based on:
+- Pair programming and TDD
+* Redundancy and diversity
+- Agile and Scrum
+- Caching and batching
+
+[single] Keeping more than one version of a critical component available, for use when one fails, is:
+* Redundancy
+- Diversity
+- Compartmentalization
+- Time-boxing
+
+[single] Providing the same functionality in different ways, so that versions do not fail in the same way, is:
+- Redundancy
+* Diversity
+- Modularity
+- Polymorphism
+
+[single] What is a risk of adding diversity and redundancy?
+- It makes the versions of a component fail in the same way
+* It adds complexity, which can increase the chance of error
+- It removes the need for verification and validation altogether
+- It makes the backup components unavailable when a failure occurs
+
+[multi] Which are fault tolerance and recovery tactics?
+* Exception handling
+* Checkpoint/rollback
+* Recovery capabilities
+* Active redundancy
+* Passive redundancy
+* Voting
+- Ping/echo
+- Heartbeat
+- Monitoring and event processing
+> The wrong options are run-time fault detection tactics.
+
+[single] Which tactic records a consistent state, to which the system can be restored?
+- Voting on redundant results
+* Checkpoint/rollback
+- Heartbeat monitoring by a listener
+- Hot restart of redundant components
+
+[single] Which tactic has all redundant components respond in parallel, with only one response used (usually the first)?
+* Active redundancy (hot restart)
+- Passive redundancy (warm restart)
+- Voting
+- Checkpoint/rollback
+
+[single] Which tactic has a primary respond to events and inform standbys of state updates?
+- Active redundancy (hot restart)
+* Passive redundancy (warm restart)
+- N-version programming with voting
+- Protection system with diverse technology
+
+[single] Which tactic has redundant processors compute an output sent to a component choosing the non-deviant result?
+- Heartbeat
+- Hot restart
+* Voting
+- Checkpoint/rollback
+
+[multi] Which statements about N-version programming are true?
+* Multiple versions carry out computations at the same time
+* Versions should be designed by different teams to avoid repeating the same mistake
+* Results are compared by voting and the majority result is taken as correct
+- All versions are compiled from the same source code
+- The result of the fastest version is used
+- A version only starts running after another one has failed
+
+[multi] Which statements about protection systems are true?
+* They can take emergency action if a failure occurs
+* They are redundant, because they replicate monitoring and control capabilities
+* They should be diverse, using technology different from the controlled software
+* A system stopping a train that passes a red light is an example
+- They replace the controlled software in normal operation
+- They should use the same technology as the controlled software
+- They contain no monitoring capabilities of their own
+
+# --- Security ---
+
+[multi] Which two fundamental issues should be considered when designing an architecture for security?
+* Protection
+* Distribution
+- Performance
+- Usability
+
+[single] Why are protection and distribution potentially conflicting?
+* Distributed assets are more expensive to protect, and protected assets may compromise usability and performance
+- Protected assets are more expensive to distribute, and distributed assets may compromise safety and maintainability
+- Distributed assets need one common platform, and protected assets need several different ones to avoid vulnerability
+- Distribution removes the layered protection architecture, and protection removes the redundancy of the distributed assets
+
+[order] Order the layers of the protection architecture from the outermost to the innermost:
+- Platform-level protection
+- Application-level protection
+- Record-level protection
+
+[single] Protection invoked when access to specific information is requested is:
+- Platform-level protection
+- Application-level protection
+* Record-level protection
+- Network-level protection
+
+[multi] Why distribute assets?
+* Attacks on one system do not necessarily lead to complete loss of service
+* Platforms may differ, so they do not share a common vulnerability
+* It is particularly important if the risk of denial of service attacks is high
+- It makes the assets cheaper to protect
+- It lets all assets share one protection platform
+- It makes denial of service attacks less relevant to the design
+
+[multi] Which are security guidelines from the slides?
+* Base security decisions on an explicit security policy
+* Avoid a single point of failure
+* Fail securely
+* Balance security and usability
+* Log user actions
+* Validate all inputs
+- Keep all assets in one area
+- Rely on one strong password
+- Give users access to all system information
+- Decide security issues case by case
+
+[multi] Which of these are also security guidelines from the slides?
+* Use redundancy and diversity to reduce risk
+* Compartmentalize your assets
+* Design for recoverability
+* Design for deployment
+- Hide the security policy from staff
+- Keep a single copy of each asset
+- Leave recoverability out of the design
+
+[single] Security guideline: requiring both a password and question-based authentication applies:
+* Avoid a single point of failure
+- Fail securely
+- Compartmentalize your assets
+- Design for deployment
+
+[single] Security guideline: when a system fails, sensitive information still cannot be accessed by unauthorized users.
+- Log user actions
+* Fail securely
+- Validate all inputs
+- Balance security and usability
+
+[single] Security guideline: users only have access to the information they need rather than all system information.
+- Avoid a single point of failure
+- Design for deployment
+* Compartmentalize your assets
+- Log user actions
+
+[single] What is survivability?
+* A system's ability to deliver essential services whilst under attack or after part of it was damaged
+- A system's ability to remain in use for decades without needing any further maintenance or evolution
+- A system's ability to pass all of its acceptance tests after it has been moved to a new platform
+- A team's ability to continue a project after some of its experienced developers have left the company
+
+[multi] Which are the strategies of system survivability?
+* Resistance
+* Recognition
+* Recovery
+- Retirement
+- Regression
+- Rollout
+
+[single] Which survivability strategy builds in capabilities to detect attacks and failures and assess the damage?
+- Resistance
+* Recognition
+- Recovery
+- Redundancy
+
+[single] Which survivability strategy delivers services whilst the system is under attack?
+- Resistance
+- Recognition
+* Recovery
+- Rollback
+
+# --- Performance, modifiability, usability ---
+
+[multi] Which are performance tactics?
+* Introduce concurrency
+* Control the use of resources
+* Increase available resources
+- Add a voting component
+- Separate the user interface
+- Defer binding time
+
+[multi] Which belong to "control the use of resources" in performance tactics?
+* Load balancing
+* Scheduling by priority
+* Caching
+* Maintaining multiple copies to reduce contention
+- Adding faster processors
+- Adding more memory
+- Using faster networks
+> The wrong options belong to "increase available resources".
+
+[multi] Which are modifiability tactics that defer binding time?
+* Runtime registration
+* Configuration files
+* Polymorphism
+* Component replacement
+* Adherence to defined protocols
+- Checkpoint/rollback
+- Heartbeat
+- Hide information
+
+[single] Which defer-binding tactic allows late binding of method calls?
+* Polymorphism
+- Configuration files
+- Component replacement
+- Runtime registration
+
+[single] Which defer-binding tactic allows load time binding?
+- Polymorphism
+- Configuration files
+* Component replacement
+- Defined protocols
+
+[single] Which defer-binding tactic is intended to set parameters at startup?
+- Polymorphism
+* Configuration files
+- Runtime registration
+- Defined protocols
+
+[single] What is a ripple effect?
+* The necessity of changing modules not directly affected by a modification
+- The spread of a failure from one component to the components using it
+- The loss of a network as a message is broadcast over and over between nodes
+- The growth of a product backlog as user stories keep on being added to it
+
+[single] Which tactic prevents ripple effects by choosing which information to make visible?
+- Polymorphism
+* Hide information
+- Voting
+- Heartbeat
+
+[single] What is the usability design-time tactic?
+* Separate the user interface from the rest of the application
+- Maintain a model of the task the user is attempting at the moment
+- Maintain a model of the user's knowledge and of their expected behaviour
+- Maintain a model of the system and of the behaviour it is expected to show
+
+[multi] Which are usability runtime tactics?
+* Maintain a model of the task
+* Maintain a model of the user
+* Maintain a model of the system
+- Separate the user interface
+- Hide information
+- Introduce concurrency
+
+[single] An application corrects a lower-case letter at the start of a sentence. Which usability tactic is it?
+* Maintain a model of the task
+- Maintain a model of the user
+- Maintain a model of the system
+- Separate the user interface
+
+[single] A system paces scrolling so that pages do not fly past faster than they can be read. Which usability tactic is it?
+- Maintain a model of the task
+* Maintain a model of the user
+- Maintain a model of the system
+- Separate the user interface
+
+[single] What is the slides' position on quality conflicts?
+* Almost every quality attribute negatively affects performance
+- Each quality attribute can be optimized together with the others
+- Quality attributes are independent, so each can be achieved in isolation
+- Performance is the one attribute that never conflicts with reliability
+
+[multi] Which quality conflicts appear in the slides?
+* Redundancy with voting delays system response
+* Isolating system dependencies for portability adds execution overhead
+- Better usability always improves security
+- Caching always improves consistency
+
+[single] What should the quality plan define, given that no system is optimized for all attributes?
+* The most important quality attributes for the software being developed
+- Each quality attribute, given exactly the same priority as the rest
+- The cost of the system, leaving quality attributes for the developers to decide
+- The performance of the system, since it is the attribute that users notice first
+
+# --- UML: Design Class and Package diagrams ---
+# DEMO SLIDES: Lecture6-DCD. The L6 deck lists this in its outline but has no slides for it.
+
+[single] What is the purpose of a UML Package diagram?
+* Grouping model elements into namespaces and showing dependencies between the groups
+- Showing the parallel and alternative flows of actions within a single activity of the system
+- Showing the order of the messages that are exchanged by the lifelines of an interaction
+- Showing the hardware nodes of the system and the artifacts that are deployed on each of them
+
+[single] What does the book use packages for in subsystem models?
+- Showing the object lifelines of an interaction
+* Representing subsystems in a class diagram
+- Modelling the backlog of a single sprint
+- Describing the rows of a database table
+
+[single] In UML, what does a dashed arrow from class A to class B mean?
+* A depends on B
+- A is a part of B
+- A inherits from B
+- A and B are the same
+
+[multi] What does a design class diagram add to an analysis class diagram?
+* Attribute and parameter types
+* Interfaces and their realization
+* Directed associations and dependencies
+* Visibility of members
+- Stakeholder prioritization
+- Main flows of use cases
+- Actors of the system
+
+# =============================================================================
+# LECTURE 7: Low-level design and implementation
+# Sources: slides L7, book chapter 7 (sections 7.1.5-7.4)
+# (The deck's title slide says "Lecture 6". This is the file named Lecture 7.)
+# =============================================================================
+
+# --- Low-level design and design patterns ---
+
+[multi] Which are techniques of low-level design?
+* Design patterns
+* SOLID principles
+* Guidelines for dependable or testable programming
+- MoSCoW
+- Ethnography
+- Requirements reviews
+
+[multi] Which statements about low-level design are true?
+* It includes code-level details in the model
+* It decides how exactly the system shall be implemented
+* It is typically an implicit part of implementation
+- It replaces testing of the implementation
+- It establishes the stakeholders' needs
+- It models the context of the system
+
+[multi] Which statements about design patterns are true?
+* A pattern reuses abstract knowledge about a problem and its solution
+* A pattern is a template for a design solution rather than a concrete design
+* A pattern is abstract enough to be reused in different settings
+* Pattern descriptions use inheritance, polymorphism and interface realization
+- A pattern is an executable library component
+- A pattern is a concrete design for one application
+- A pattern is tied to one programming language
+
+[multi] Which are the Gang of Four pattern groups?
+* Creational
+* Structural
+* Behavioral
+- Operational
+- Functional
+- Architectural
+> The Gang of Four book (1995) collects 23 patterns into these three groups.
+
+[multi] Which are the essential elements of a design pattern (book)?
+* Name
+* Problem description
+* Solution description
+* Consequences
+- Source code
+- Test suite
+- License
+
+[single] To which group does the Observer pattern belong?
+- Creational
+- Structural
+* Behavioral
+- Concurrency
+
+[single] To which group does the Builder pattern belong?
+* Creational
+- Structural
+- Behavioral
+- Architectural
+
+[single] To which group does the Adapter pattern belong?
+- Creational
+* Structural
+- Behavioral
+- Functional
+
+[single] Which pattern tells several objects that the state of some other object has changed?
+* Observer
+- Façade
+- Adapter
+- Singleton
+
+[single] Which pattern tidies up the interfaces to a number of related objects that were developed incrementally?
+- Observer
+* Façade
+- Builder
+- Flyweight
+
+[single] Which pattern lets classes with incompatible interfaces work together by wrapping a new interface around an existing class?
+- Observer
+- Façade
+* Adapter
+- Singleton
+
+[single] Which pattern reduces the cost of creating and manipulating a large number of similar objects?
+- Builder
+- Singleton
+- Observer
+* Flyweight
+
+[single] Which pattern restricts object creation for a class to one instance?
+* Singleton
+- Builder
+- Flyweight
+- Adapter
+
+[single] Which pattern separates the construction of a complex object from its representation?
+- Adapter
+* Builder
+- Observer
+- Façade
+
+[multi] Which consequences of the Observer pattern does the book state?
+* Minimal coupling between subject and observers
+* Display optimization can be impractical
+* Unnecessary updates are possible
+- Tight coupling between subject and observers
+- Each display can be optimized independently
+- Observers are known at compile time and do not change
+
+[multi] Which participants does the Observer pattern have in the book?
+* Subject
+* Observer
+* ConcreteSubject
+* ConcreteObserver
+- Builder
+- Adapter
+- Director
+
+# --- SOLID ---
+
+[order] Order the SOLID principles as the acronym spells them:
+- Single responsibility
+- Open/closed
+- Liskov substitution
+- Interface segregation
+- Dependency inversion
+
+[single] Who identified the SOLID principles?
+- The Gang of Four
+* Robert C. Martin
+- Barbara Liskov alone
+- Frederick Brooks
+
+[single] Which SOLID principle says that a class should have one, and only one, reason to change?
+* Single responsibility
+- Open/closed
+- Liskov substitution
+- Interface segregation
+
+[single] Which SOLID principle says that entities should be open for extension but closed for modification?
+- Single responsibility
+* Open/closed
+- Liskov substitution
+- Dependency inversion
+
+[single] Which SOLID principle says that objects of type T may be replaced with objects of subtype S without altering desirable program properties?
+- Interface segregation
+- Open/closed
+* Liskov substitution
+- Dependency inversion
+
+[single] Which SOLID principle says that no client should be forced to depend on methods it does not use?
+- Single responsibility
+- Liskov substitution
+* Interface segregation
+- Dependency inversion
+
+[single] Which SOLID principle says that high-level modules should not depend on low-level modules and both should depend on abstractions?
+- Single responsibility
+- Open/closed
+- Interface segregation
+* Dependency inversion
+
+[single] A Square class extends Rectangle, and code assuming independent width and height breaks. Which principle is violated?
+* Liskov substitution
+- Single responsibility
+- Interface segregation
+- Open/closed
+
+[single] A class ReportService computes reports, formats them as PDF and emails them. Which principle is violated?
+* Single responsibility
+- Open/closed
+- Liskov substitution
+- Dependency inversion
+
+[single] A printer client must implement fax() and scan() from one large interface despite not using them. Which principle is violated?
+- Liskov substitution
+- Dependency inversion
+* Interface segregation
+- Single responsibility
+
+[single] Adding a payment type requires editing a large switch in existing code. Which principle is violated?
+- Single responsibility
+* Open/closed
+- Interface segregation
+- Liskov substitution
+
+[single] OrderService directly instantiates MySqlDatabase rather than depending on an abstraction. Which principle is violated?
+- Liskov substitution
+- Interface segregation
+* Dependency inversion
+- Single responsibility
+
+[single] In the Open/Closed Principle, how do you avoid changing code when extending functionality?
+* Use inheritance and interfaces
+- Copy and paste classes
+- Use global variables
+- Disable compilation
+
+[single] What is the aim of the Interface Segregation Principle?
+* Keep a system decoupled and thus easier to refactor, change and redeploy
+- Merge the interfaces into one role, so clients need to know just one type
+- Remove interfaces from the design, so that clients call the classes directly
+- Make each class public, so that clients can depend on whatever they need
+
+# --- Clean code ---
+
+[multi] Which areas does Clean Code by Robert C. Martin cover?
+* Meaningful names
+* Functions
+* Comments
+* Formatting
+* Error handling
+- Stakeholder analysis
+- Requirements prioritization
+- Sprint planning
+
+[single] What does the Clean Code "Stepdown Rule" say?
+* Code reads as a top-down narrative, each function followed by those at the next lower level of abstraction
+- Code reads as a bottom-up narrative, each function followed by those at the next higher level of abstraction
+- Code is ordered alphabetically by function name, so that each function can be located quickly in the file
+- Code keeps all comments at the bottom of a file, so that each function's body stays short and uninterrupted
+
+[single] Which Clean Code recommendation applies to a function's body in the slide example?
+- Use as many abstractions as possible at once
+* One level of abstraction per function
+- Avoid all helper functions
+- Write all logic inline
+
+# --- Dependability guidelines ---
+
+[multi] Which are programming guidelines for dependability?
+* Limit the visibility of information in a program
+* Check all inputs for validity
+* Provide a handler for all exceptions
+* Minimize the use of error-prone constructs
+- Expose data through public fields for convenience
+- Trust inputs that come from other components
+- Prefer recursion and aliasing in critical code
+- Leave unexpected exceptions unhandled
+
+[multi] Which of these are also programming guidelines for dependability?
+* Provide restart capabilities
+* Check array bounds
+* Include timeouts when calling external components
+* Name all constants that represent real-world values
+- Wait for external components without a time limit
+- Write real-world constants as literal numbers
+- Leave array index checks to the callers
+- Make users redo their work after a failure
+
+[single] Why limit the visibility of information in a program?
+* Accidental corruption of program state by other components becomes impossible
+- The compiler can then generate faster code for each of the program's components
+- The components no longer need unit tests, since their state cannot be observed
+- The number of classes in the program becomes smaller and the design gets simpler
+
+[multi] Which types of input checks do the slides name?
+* Range checks
+* Size checks
+* Representation checks
+* Reasonableness checks
+- Frequency checks
+- Priority checks
+- Ownership checks
+
+[single] Checking that a name does not contain numerals is a:
+- Range check
+- Size check
+* Representation check
+- Reasonableness check
+
+[single] Checking that a name has at most 40 characters is a:
+- Range check
+* Size check
+- Representation check
+- Reasonableness check
+
+[single] Checking that an input is not an extreme value given what is known about it is a:
+- Range check
+- Size check
+- Representation check
+* Reasonableness check
+
+[multi] To whom do exception handling strategies delegate responsibility?
+* Caller
+* Callee
+* Controller
+- Compiler
+- End user
+- Operating system vendor
+
+[single] Which exception handling strategy signals to a calling component that an exception has occurred?
+* Delegate to the caller
+- Delegate to the callee
+- Delegate to the controller
+- Ignore it
+
+[single] Which exception handling strategy carries out alternative processing, possible only with enough information to recover?
+- Delegate to the caller
+* Delegate to the callee
+- Delegate to the controller
+- Abort the system
+
+[single] Which exception handling strategy passes control to a run-time support system?
+- Delegate to the caller
+- Delegate to the callee
+* Delegate to the controller
+- Delegate to the user
+
+[multi] Which are error-prone constructs named in the slides?
+* Parallelism
+* Recursion
+* Aliasing
+* Floating-point numbers
+* Interrupts
+- Named constants
+- Array bounds checks
+- Timeouts
+
+[single] What is the problem with aliasing?
+* More than one name refers to the same state variable
+- Numbers are inherently imprecise, so comparisons become invalid
+- Errors in the construct can cause a memory overflow
+- A critical operation can be terminated by an external event
+
+[single] Why is floating-point arithmetic error-prone?
+- More than one name refers to the same value in a program at once
+* It is inherently imprecise, which leads to invalid comparisons
+- It can cause unforeseen interactions between concurrent processes
+- Mistakes in its use can cause a memory overflow at any moment
+
+[multi] What is a restart capability for?
+* Restarting after failure without users having to redo everything
+* Keeping copies of forms so that users do not fill them in again
+* Saving state periodically and restarting from the saved state
+- Rebooting the developers' machines after a build
+- Making users repeat a failed transaction from the beginning
+- Clearing the saved state after each failure
+
+[single] What vulnerability results from unchecked array bounds in languages such as C or C++?
+* Buffer overflow
+- SQL injection
+- Race condition
+- Deadlock
+
+[single] Why include timeouts when calling external components?
+* Failure of a remote computer can be silent, so a service or failure indication may never arrive
+- Messages to a remote computer become smaller, so that less network bandwidth is needed in total
+- External components process calls faster when they know how long the caller is ready to wait
+- Timeouts keep attackers from writing executable code into memory beyond the top of an array
+
+[multi] Why name constants that represent real-world values?
+* You are less likely to mistype a value
+* When such a value changes, you change it in one place
+- Named constants run faster on all platforms
+- They hide values from all programmers
+
+[multi] Which are programming guidelines for performance?
+* Reduce the resources required for individual computations
+* Reduce the number of processed computations, e.g. by caching and batching
+* Control the use of resources, e.g. bound execution times and queue sizes
+* Schedule non-urgent resource usage to off-peak hours
+- Add logging to every statement
+- Increase the frequency of event processing
+- Schedule non-urgent work for peak hours
+
+[multi] Which are best practices from industry listed in the slides?
+* Clean code and SOLID principles
+* Code ownership
+* Continuous testing
+* Continuous integration
+* Refactoring and design patterns
+- Avoiding documentation
+- Integrating once at the end of the project
+- Testing after the code is finished
+
+# --- Interfaces (book 7.1.5) ---
+
+[multi] What does the book say about interface specification?
+* It lets objects and subsystems be designed in parallel
+* Interface design defines signatures and semantics of services
+* In UML, it uses the «interface» stereotype without an attribute section
+* One object may have several interfaces, and a group of objects may share one
+- Interfaces should expose the data representation
+- One object has at most one interface
+- UML interfaces list attributes and leave out operations
+
+# --- Implementation issues ---
+
+[multi] Which are implementation issues from the slides?
+* Reuse
+* Configuration management
+* Variability of devices
+* The right technology and tools
+* Code size and complexity
+- Stakeholder identification
+- Requirements prioritization
+- Hazard analysis
+
+[multi] Which are implementation issues in the book?
+* Reuse
+* Configuration management
+* Host-target development
+- Requirements elicitation
+- Stakeholder negotiation
+- Time-boxing
+
+[multi] Which are reuse levels?
+* Object level
+* Component level
+* System level
+* Abstraction level
+- Compiler level
+- Hardware level
+- Statement level
+
+[single] At which reuse level do you not reuse software directly but use knowledge of successful abstractions in your design?
+* Abstraction level
+- Object level
+- Component level
+- System level
+
+[single] At which reuse level do you reuse entire application systems?
+- Abstraction level
+- Object level
+- Component level
+* System level
+
+[single] At which reuse level do you reuse collections of objects and object classes in application systems?
+- Abstraction level
+- Object level
+* Component level
+- System level
+
+[single] At which reuse level do you directly reuse objects from a library?
+- Abstraction level
+* Object level
+- Component level
+- System level
+
+[single] Which of these exemplifies reuse at the abstraction level?
+* Applying a design pattern
+- Calling a library sorting routine
+- Using a web framework
+- Configuring an ERP system
+
+[multi] Which costs of reuse does the book name?
+* Finding, assessing and testing reusable software
+* Purchasing it
+* Adapting and configuring it
+* Integrating it with other components
+- Writing the reused code from scratch
+- Training customers in UML
+- Rewriting the requirements document
+
+[multi] Which are the configuration management activities on the slides?
+* Version management
+* System integration
+* Problem tracking
+- Stakeholder negotiation
+- Refactoring
+- Code review
+
+[single] Which configuration management activity does the book add to those on the slides?
+* Release management
+- Requirements analysis
+- Refactoring
+- Fault tolerance
+
+[single] Which configuration management activity defines what versions of components are used to create each system version?
+- Version management
+* System integration
+- Problem tracking
+- Release management
+
+[single] Which configuration management activity lets users report bugs, and lets developers see who is working on them?
+- Version management
+- System integration
+* Problem tracking
+- Release management
+
+[single] What is the configuration management activity that coordinates development by several programmers on versions of components?
+* Version management
+- System integration
+- Problem tracking
+- Release management
+
+[single] What is configuration management, according to the slides' key points?
+* The process of managing changes to an evolving software system
+- The process of adjusting the developer's IDE and its plug-ins
+- The process of setting a system's runtime parameters at startup
+- The process of purchasing the hardware that the system runs on
+
+[single] In host-target development:
+* Software is developed on one computer (host) and executes on a separate one (target)
+- Software is developed on one computer (target) and executes on a separate one (host)
+- A server (host) delivers web pages to a browser (target) over the network on request
+- A manager (host) assigns deadlines (targets) to the developers in each of the sprints
+
+[multi] Which deployment decisions does the book name?
+* Hardware and software requirements of a component
+* Availability requirements of the system
+* Component communications
+- The IDE used by the development team
+- The version control system in use
+- The length of a sprint
+
+[multi] Which statements about open-source licenses are true (book)?
+* GPL is reciprocal: using it obliges you to make your software open source
+* LGPL lets you link without publishing your components, but changes to the licensed component must be published
+* BSD is nonreciprocal: there is no obligation to republish changes
+- BSD-licensed code may not be included in proprietary software
+- GPL is nonreciprocal: there is no obligation to publish your software
+- LGPL obliges you to publish every component that links to the licensed one
+
+[single] Which license should you avoid if your product must stay secret?
+* GPL
+- BSD
+- MIT
+- A commercial license you bought
+
+[single] What is a key point of the book's advice on open-source development?
+* Publishing source code does not guarantee community involvement
+- Publishing source code transfers ownership of it to the community
+- Open-source licenses are not legally binding on the users of the code
+- Open-source components cannot be used in commercial software products
+
+# --- UML: Interaction diagrams ---
+# DEMO SLIDES: Lecture7-InteractionDiagrams. Book 7.1.4 only gives a short overview.
+
+# PAST TEST (Q4)
+[single] Which description best fits a lifeline in a UML Sequence diagram?
+* A lifeline represents a single participant in an interaction
+- A lifeline is a process represented with a sequence of messages following each other
+- A lifeline is a uniquely identifiable message sent between participants
+- A lifeline is the communication path through which two objects can send messages
+
+[single] How does time flow in a UML Sequence diagram?
+* From top to bottom
+- From left to right
+- From bottom to top
+- It is not represented
+
+[single] What does an activation bar (execution specification) on a lifeline show?
+* When the lifeline has focus of control
+- Which attributes the participant's class contains
+- How much memory the participant has allocated
+- What value the last message has returned to its sender
+
+[multi] Which are valid combined fragment operators in a Sequence diagram?
+* alt
+* opt
+* loop
+* break
+- fork
+- join
+- swimlane
+- merge
+
+[single] Which combined fragment models a choice between several alternatives with guards?
+* alt
+- opt
+- loop
+- par
+
+[single] Which combined fragment models a behaviour performed only if a guard is true?
+- alt
+* opt
+- loop
+- par
+
+[single] How does a synchronous message differ from an asynchronous one?
+* The sender waits for a reply to a synchronous message, but continues after an asynchronous one
+- The sender continues after a synchronous message, but waits for a reply to an asynchronous one
+- A synchronous message crosses a network, while an asynchronous one stays within a single process
+- A synchronous message cannot return a value, while an asynchronous one returns it straight away
+
+[single] What is the difference between a Sequence and a Communication diagram?
+* A Sequence diagram emphasizes the time order of messages, a Communication diagram the links between participants
+- A Communication diagram emphasizes the time order of messages, a Sequence diagram the links between participants
+- A Sequence diagram shows classes without their objects, a Communication diagram shows objects without any messages
+- A Sequence diagram is a structural diagram of the system, a Communication diagram is a behavioral diagram of a class
+
+[single] When does the book recommend a sequence model?
+- One for each class of the design model
+* One for each significant interaction or use case
+- One for each release of the finished system
+- A single one covering the system as a whole
