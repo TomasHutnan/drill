@@ -1,0 +1,10 @@
+[tools]
+node = "24"
+
+[tasks.dev]
+description = "Serve the site on http://localhost:3000"
+run = "npx --yes serve@14 --listen 3000 ."
+
+[tasks.test]
+description = "Run the unit tests"
+run = "node --test"

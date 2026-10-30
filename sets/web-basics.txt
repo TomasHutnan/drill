@@ -1,0 +1,35 @@
+title: Web basics
+mode: answer
+penalty: 0.5
+feedback: immediate
+
+[single] Which HTML element is used for the largest heading?
+* h1
+- h6
+- header
+- title
+
+[single] Which CSS property changes the text colour?
+- font-color
+- text-color
+* color
+
+[multi] Which of these are JavaScript primitive types?
+* string
+* boolean
+* undefined
+- array
+- object
+> Arrays are objects, and objects are not primitives.
+
+[order] Order the CSS box model layers from the inside out:
+- content
+- padding
+- border
+- margin
+
+[order] Order the steps of a browser rendering a page:
+- Parse HTML into the DOM
+- Build the render tree
+- Lay out elements
+- Paint pixels

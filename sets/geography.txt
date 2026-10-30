@@ -1,0 +1,40 @@
+title: European geography
+
+[single] What is the capital of Slovakia?
+- Prague
+* Bratislava
+- Vienna
+- Budapest
+> Bratislava lies on the Danube, right next to the Austrian and Hungarian borders.
+
+[single] Which river flows through Kyiv?
+- Danube
+- Vistula
+* Dnipro
+- Dniester
+
+[multi] Which of these countries border Slovakia?
+* Czechia
+* Ukraine
+* Austria
+- Germany
+- Romania
+> Slovakia's neighbours are Czechia, Poland, Ukraine, Hungary and Austria.
+
+[multi] Which of these cities are national capitals?
+* Prague
+* Warsaw
+- Kraków
+- Brno
+
+[order] Order these mountains from highest to lowest:
+- Mont Blanc
+- Gerlachovský štít
+- Sněžka
+> 4,806 m, 2,655 m and 1,603 m.
+
+[order] Order these countries by area, largest first:
+- Ukraine
+- Poland
+- Czechia
+- Slovakia
